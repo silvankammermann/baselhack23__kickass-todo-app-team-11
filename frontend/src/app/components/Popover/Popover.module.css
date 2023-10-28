@@ -1,0 +1,41 @@
+.popover {
+  position: fixed;
+  border-radius: 2rem 2rem 0 0;
+  top: 5rem;
+  left: 0;
+  width: 100vw;
+  height: calc(100vh - 5rem);
+  padding: 3rem 2rem 0;
+  background: var(--color_white);
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
+}
+
+.popover__content {
+  max-height: 100%;
+  overflow: scroll;
+}
+
+.popover__close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.5rem;
+  color: var(--color_purple);
+  cursor: pointer;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--color_darkPurple);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
