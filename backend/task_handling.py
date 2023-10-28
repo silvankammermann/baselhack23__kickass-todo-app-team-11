@@ -48,11 +48,12 @@ def set_do_later(document_id):
 
 def get_tasks(search=""):
     data = []
-    regex = {'$regex': search, '$options': 'i'}
     search_criteria = {
-        'name': regex,
         'creation_date': {'$lt': int(time.time())}
     }
+    if search:
+        search_criteria['name'] = {'$regex': search, '$options': 'i'}
+
     results = db_controller.get_task_collection().find({'$and': [search_criteria]}).sort("deadline")
     for obj in results:
         obj_i = obj
