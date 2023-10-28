@@ -14,10 +14,11 @@ from db_controller import get_task_collection, get_user_collection
 app = Flask(__name__)
 
 
-@app.route("/", methods=["GET"])
-def get_tasks():
-    tasks = {"data": task_get_tasks()}
-    # tasks = jsonify
+@app.route("/gettasks/<search>", methods=["GET"])
+def get_tasks(search):
+    # call like this: http://127.0.0.1:5000/gettasks/foo
+    print(search)
+    tasks = task_get_tasks()
     return tasks
 
 
