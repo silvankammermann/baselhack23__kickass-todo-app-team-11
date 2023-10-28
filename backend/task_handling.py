@@ -41,3 +41,10 @@ def add_task(taskJson):
         # Handle any potential errors here
         print(f"Error inserting task: {e}")
         return None
+
+def get_ordered_tasks():
+    """
+    you can call list() on object to get python list of dicts
+    :return: <class 'pymongo.cursor.Cursor'> / iterable
+    """
+    return db_controller.get_task_collection().find().sort("deadline")
