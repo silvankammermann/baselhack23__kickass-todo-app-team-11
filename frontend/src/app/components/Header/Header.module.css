@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: var(--gradient_down);
+  padding: 3rem 2rem;
+}
+
+.icons {
+  display: flex;
+}
+
+.title {
+  text-transform: uppercase;
+  color: var(--color_yellow);
+}
