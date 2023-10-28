@@ -6,23 +6,26 @@ import task_handling
 
 app = Flask(__name__)
 
-@app.route("/gettasks")
+
+@app.route("/gettasks", methods=["GET"])
 def get_tasks():
-    collection = get_task_collection()
-    sorted_tasks = task_handling.order_tasks()
-
-    return sorted_tasks
-
-@app.route("/deletetask/<int:task_id>", methods=["DELETE"])
-def delete_task(task_id):
     pass
 
 
 @app.route("/addtask", methods=["POST"])
-def create_task(tasks):
+def add_tasks(tasks: list):
+    pass
+
+
+@app.route("/set_done/<int:task_id>", methods=["POST"])
+def set_done(task_id: int):
+    pass
+
+
+@app.route("/set_do_later/<int:task_id>", methods=["POST"])
+def do_later(task_id: int):
     pass
 
 
 if __name__ == "__main__":
     app.run()
-
