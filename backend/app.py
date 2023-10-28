@@ -13,9 +13,15 @@ def get_tasks():
 
     return sorted_tasks
 
-
-def delete_task(task):
+@app.route("/deletetask/<int:task_id>", methods=["DELETE"])
+def delete_task(task_id):
     pass
+
+
+@app.route("/addtask", methods=["POST"])
+def create_task(tasks):
+    pass
+
 
 if __name__ == "__main__":
     app.run()
