@@ -6,3 +6,4 @@
 pyvenv.cfg
 backend/__pycache__/db_controller.cpython-310.pyc
 backend/__pycache__/task_handling.cpython-310.pyc
+*.pyc

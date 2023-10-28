@@ -1,4 +1,7 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
 
-module.exports = nextConfig
+const nextConfig = {
+  API_URL: "https://jsonplaceholder.typicode.com/posts/",
+};
+
+module.exports = nextConfig;
