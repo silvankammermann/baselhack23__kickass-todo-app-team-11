@@ -1,6 +1,7 @@
 import json
 import db_controller
 import pymongo
+import time
 
 from datetime import datetime
 
@@ -36,7 +37,6 @@ def get_ordered_tasks(n=10):
     n: max number of task forwarded from the function
     :return list of dicts
     """
-    # todo get current
     return list(db_controller.get_task_collection().find().sort("deadline").limit(n))
 
 
@@ -47,4 +47,12 @@ def set_do_later(document_id):
     update_status(document_id, "do_later")
 
 def get_tasks():
+    data = []
+    for obj in db_controller.get_task_collection().find({'creation_date': {'$lt': int(time.time())}}).sort("deadline"):
+        obj_i = obj
+        obj_i["_id"] = str(obj_i["_id"])
+        data.append(obj_i)
+    return data
+
+def update_score():
     raise NotImplementedError
