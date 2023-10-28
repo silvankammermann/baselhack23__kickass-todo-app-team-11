@@ -8,7 +8,12 @@ app = Flask(__name__)
 def hello():
     with open('dummy_data.json') as task_file:
         tasks = task_file.read()
-    return tasks
+        # tasks = json.load(task_file)
+
+        foo = json.loads(tasks)
+        print(foo)
+
+    return foo
 
 
 if __name__ == "__main__":
