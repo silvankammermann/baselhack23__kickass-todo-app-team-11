@@ -1,21 +1,21 @@
 # save this as app.py
 from flask import Flask
 import json
+from db_controller import get_task_collection, get_user_collection
 import task_handling
 
 app = Flask(__name__)
 
 @app.route("/gettasks")
 def get_tasks():
-    # with open('dummy_data.json') as task_file:
-    #     tasks_str = task_file.read()
-    #     # tasks = json.load(task_file)
-    #     tasks = json.loads(tasks_str)
-
+    collection = get_task_collection()
     sorted_tasks = task_handling.order_tasks()
 
     return sorted_tasks
 
+
+def delete_task(task):
+    pass
 
 if __name__ == "__main__":
     app.run()
