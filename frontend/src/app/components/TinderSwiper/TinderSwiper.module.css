@@ -38,3 +38,8 @@
 .card:nth-child(odd) .container {
   transform: rotate(-3deg);
 }
+
+.decissionTriggers {
+  text-align: center;
+  transform: translateY(-1em);
+}

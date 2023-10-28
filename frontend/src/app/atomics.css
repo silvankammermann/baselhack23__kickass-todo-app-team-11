@@ -63,3 +63,15 @@
 .centeredText {
   text-align: center;
 }
+
+/* ***** Border radius */
+
+.circle {
+  border: 0;
+  padding: 0.5rem;
+  border-radius: 100%;
+  aspect-ratio: 1 / 1;
+  height: 3em;
+  width: 3em;
+  margin: 0 .5em;
+}
