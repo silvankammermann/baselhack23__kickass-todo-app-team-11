@@ -5,6 +5,7 @@ from flask import Flask
 from task_handling import set_done as task_set_done
 from task_handling import set_do_later as task_set_later
 from task_handling import add_task as task_add_task
+from task_handling import get_tasks as task_get_tasks
 
 from db_controller import get_task_collection, get_user_collection
 
@@ -12,9 +13,9 @@ from db_controller import get_task_collection, get_user_collection
 app = Flask(__name__)
 
 
-@app.route("/gettasks", methods=["GET"])
+@app.route("/", methods=["GET"])
 def get_tasks():
-    tasks = get_tasks()
+    tasks = task_get_tasks()
     return tasks
 
 
