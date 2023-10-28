@@ -18,14 +18,7 @@ app = Flask(__name__)
 @app.route("/<search>", defaults={'search': None})
 @app.route("/get-tasks/<search>", methods=["GET"])
 def get_tasks(search):
-    return task_get_tasks(search)
-
-
-# @app.route("/gettasks", methods=["GET"])
-# def get_tasks_all(search):
-#     tasks = task_get_tasks()
-#     return tasks
-
+    return task_get_tasks(search, sorting="importance-deadline")
 
 @app.route("/add-task", methods=["POST"])
 def add_tasks(tasks: list):
