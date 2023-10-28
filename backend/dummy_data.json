@@ -1,109 +1,87 @@
 [
   {
-      "card": "1",
-      "content": {
-          "name": "vacuuming",
-          "id": "42",
-          "urgency": "1",
-          "importance": "1",
-          "fun_factor": "0",
-          "duration": "30",
-          "deadline": "2023-10-27_16:00",
-          "dependency": "tba",
-          "creation_date": "2023-10-29_16:00",
-          "status": "0",
-          "delayed_int": "0", 
-          "task_type": "daily"
-      }
+    "name": "vacuuming",
+    "urgency": "1",
+    "importance": "1",
+    "fun_factor": "0",
+    "duration": "30",
+    "deadline": "2023-10-27_16:00",
+    "dependency": "tba",
+    "creation_date": "2023-10-29_16:00",
+    "status": "0",
+    "delayed_int": "0",
+    "task_type": "daily"
   },
   {
-      "card": "2",
-      "content": {
-          "name": "taxes",
-          "id": "43",
-          "urgency": "2",
-          "importance": "3",
-          "fun_factor": "0",
-          "score": "0",
-          "duration": "120",
-          "deadline": "2023-10-29_16:00",
-          "dependency": "tba",
-          "creation_date": "2023-10-29_16:00",
-          "status": "0",
-          "delayed_int": "0", 
-          "task_type": "weekly"
-      }
+    "name": "taxes",
+    "urgency": "2",
+    "importance": "3",
+    "fun_factor": "0",
+    "score": "0",
+    "duration": "120",
+    "deadline": "2023-10-29_16:00",
+    "dependency": "tba",
+    "creation_date": "2023-10-29_16:00",
+    "status": "0",
+    "delayed_int": "0",
+    "task_type": "weekly"
+  }
   },
   {
-      "card": "3",
-      "content": {
-          "name": "groceries",
-          "id": "44",
-          "urgency": "2",
-          "importance": "2",
-          "fun_factor": "0",
-          "score": "0",
-          "duration": "60",
-          "deadline": "2023-10-29_16:00",
-          "dependency": "tba",
-          "creation_date": "2023-10-29_16:00",
-          "status": "0",
-          "delayed_int": "0", 
-          "task_type": "single"
-      }
+    "name": "groceries",
+    "urgency": "2",
+    "importance": "2",
+    "fun_factor": "0",
+    "score": "0",
+    "duration": "60",
+    "deadline": "2023-10-29_16:00",
+    "dependency": "tba",
+    "creation_date": "2023-10-29_16:00",
+    "status": "0",
+    "delayed_int": "0",
+    "task_type": "single"
+  }
   },
   {
-      "card": "4",
-      "content": {
-          "name": "fittness",
-          "id": "45",
-          "urgency": "1",
-          "importance": "1",
-          "fun_factor": "2",
-          "score": "0",
-          "duration": "45",
-          "deadline": "2023-10-29_16:00",
-          "dependency": "tba",
-          "creation_date": "2023-10-29_16:00",
-          "status": "0",
-          "delayed_int": "0", 
-          "task_type": "daily"
-      }
+    "name": "fittness",
+    "urgency": "1",
+    "importance": "1",
+    "fun_factor": "2",
+    "score": "0",
+    "duration": "45",
+    "deadline": "2023-10-29_16:00",
+    "dependency": "tba",
+    "creation_date": "2023-10-29_16:00",
+    "status": "0",
+    "delayed_int": "0",
+    "task_type": "daily"
   },
   {
-      "card": "5",
-      "content": {
-          "name": "learning",
-          "id": "46",
-          "urgency": "0",
-          "importance": "0",
-          "fun_factor": "1",
-          "score": "0",
-          "duration": "30",
-          "deadline": "2023-10-29_16:00",
-          "dependency": "tba",
-          "creation_date": "2023-10-29_16:00",
-          "status": "0",
-          "delayed_int": "0", 
-          "task_type": "daily"
-      }
+    "name": "learning",
+    "urgency": "0",
+    "importance": "0",
+    "fun_factor": "1",
+    "score": "0",
+    "duration": "30",
+    "deadline": "2023-10-29_16:00",
+    "dependency": "tba",
+    "creation_date": "2023-10-29_16:00",
+    "status": "0",
+    "delayed_int": "0",
+    "task_type": "daily"
   },
   {
-      "card": "6",
-      "content": {
-          "name": "food preparation",
-          "id": "42",
-          "urgency": "0",
-          "importance": "2",
-          "fun_factor": "1",
-          "score": "0",
-          "duration": "0",
-          "deadline": "2023-10-29_16:00",
-          "dependency": "tba",
-          "creation_date": "2023-10-29_16:00",
-          "status": "0",
-          "delayed_int": "0", 
-          "task_type": "weekly"
-      }
+    "name": "food preparation",
+    "urgency": "0",
+    "importance": "2",
+    "fun_factor": "1",
+    "score": "0",
+    "duration": "0",
+    "deadline": "2023-10-29_16:00",
+    "dependency": "tba",
+    "creation_date": "2023-10-29_16:00",
+    "status": "0",
+    "delayed_int": "0",
+    "task_type": "weekly"
   }
 ]
