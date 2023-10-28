@@ -2,6 +2,7 @@
 import json
 from flask import Flask
 from flask import jsonify
+from flask_cors import CORS # needs pip install Flask-CORS
 
 from user_handling import get_user as user_get_user
 from task_handling import set_done as task_set_done
@@ -11,8 +12,8 @@ from task_handling import get_tasks as task_get_tasks
 
 from db_controller import get_task_collection, get_user_collection
 
-
 app = Flask(__name__)
+CORS(app)
 
 # call like this: http://127.0.0.1:5000/gettasks/foo
 @app.route("/<search>", defaults={'search': None})
