@@ -1,55 +1,61 @@
 /* ***** Colors */
 
-.color--darkPurple {
+.colorDarkPurple {
   color: var(--color_darkPurple);
 }
 
-.color--lightPurple {
+.colorLightPurple {
   color: var(--color_lightPurple);
 }
 
-.color--purple {
+.colorPurple {
   color: var(--color_purple);
 }
 
-.color--yellow {
+.colorYellow {
   color: var(--color_yellow);
 }
 
 /* --- System */
 
-.color--green {
+.colorGreen {
   color: var(--color__green);
 }
 
-.color--red {
+.colorRed {
   color: var(--color__red);
 }
 
 /* ***** Background Colors*/
 
-.bg--darkPurple {
+.bgDarkPurple {
   color: var(--bg_darkPurple);
 }
 
-.bg--lightPurple {
+.bgLightPurple {
   color: var(--bg_lightPurple);
 }
 
-.bg--purple {
+.bgPurple {
   color: var(--bg_purple);
 }
 
-.bg--yellow {
+.bgYellow {
   color: var(--bg_yellow);
 }
 
 /* --- System */
 
-.bg--green {
+.bgGreen {
   color: var(--bg__green);
 }
 
-.bg--red {
+.bgRed {
   color: var(--bg__red);
+}
+
+/* --- */
+
+.centeredText {
+  text-align: center;
 }
