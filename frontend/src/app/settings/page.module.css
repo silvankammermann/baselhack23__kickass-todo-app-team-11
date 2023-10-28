@@ -1,0 +1,26 @@
+.characteristic__box {
+  background-color: #fff;
+  border: 2px dotted var(--color_lightPurple);
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+  border-radius: 15px;
+  color: var(--color_darkPurple);
+}
+
+.characteristic__box__active {
+  background-color: var(--color_lightPurple);
+  border: 2px solid var(--color_lightPurple);
+}
+
+.characteristic__box__active:hover {
+  border: 2px solid var(--color_darkPurple);
+}
+
+.characteristic__box__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
