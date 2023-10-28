@@ -1,6 +1,7 @@
 import json
 import db_controller
 import pymongo
+import time
 
 from datetime import datetime
 
@@ -58,4 +59,4 @@ def set_do_later():
     raise NotImplementedError
 
 def get_tasks():
-    raise NotImplementedError
+    return list(db_controller.get_task_collection().find({'creation_date': {'$lt': int(time.time())}}).sort("deadline"))
