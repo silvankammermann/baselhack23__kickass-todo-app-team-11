@@ -18,40 +18,44 @@
 
 /* --- System */
 
+.colorWhite {
+  color: var(--color_white);
+}
+
 .colorGreen {
-  color: var(--color__green);
+  color: var(--color_green);
 }
 
 .colorRed {
-  color: var(--color__red);
+  color: var(--color_red);
 }
 
 /* ***** Background Colors*/
 
 .bgDarkPurple {
-  color: var(--bg_darkPurple);
+  background: var(--color_darkPurple);
 }
 
 .bgLightPurple {
-  color: var(--bg_lightPurple);
+  background: var(--color_lightPurple);
 }
 
 .bgPurple {
-  color: var(--bg_purple);
+  background: var(--color_purple);
 }
 
 .bgYellow {
-  color: var(--bg_yellow);
+  background: var(--color_yellow);
 }
 
 /* --- System */
 
 .bgGreen {
-  color: var(--bg__green);
+  background: var(--color_green);
 }
 
 .bgRed {
-  color: var(--bg__red);
+  background: var(--color_red);
 }
 
 /* --- */

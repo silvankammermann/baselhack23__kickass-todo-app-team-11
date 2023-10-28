@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { CircularProgress, Typography, Grid } from "@mui/material";
 import TextField from '@mui/material/TextField';
@@ -47,7 +47,7 @@ export default function Settings() {
 
   return (
     <>
-      <h1 style={{ textAlign: "center" }}>Profile</h1>
+      <h1 className="colorWhite centeredText">Profile</h1>
 
       {userData.username && characteristics.length > 0 ? (
         <>
@@ -75,9 +75,8 @@ export default function Settings() {
                 <Image
                   width={400}
                   height={400}
-                  src={`/images/${characteristic}${
-                    isActive(characteristic) ? "_active" : ""
-                  }.png`}
+                  src={`/images/${characteristic}${isActive(characteristic) ? "_active" : ""
+                    }.png`}
                   alt="Icon"
                   style={{
                     width: "100%",
