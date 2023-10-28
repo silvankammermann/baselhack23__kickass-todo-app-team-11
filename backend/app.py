@@ -6,7 +6,7 @@ import task_handling
 app = Flask(__name__)
 
 @app.route("/gettasks")
-def hello():
+def get_tasks():
     # with open('dummy_data.json') as task_file:
     #     tasks_str = task_file.read()
     #     # tasks = json.load(task_file)
