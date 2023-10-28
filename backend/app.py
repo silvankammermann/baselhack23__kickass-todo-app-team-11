@@ -13,13 +13,19 @@ from db_controller import get_task_collection, get_user_collection
 
 app = Flask(__name__)
 
-
+@app.route("/<search>", defaults={'search': None})
 @app.route("/gettasks/<search>", methods=["GET"])
 def get_tasks(search):
     # call like this: http://127.0.0.1:5000/gettasks/foo
     print(search)
     tasks = task_get_tasks()
     return tasks
+
+
+# @app.route("/gettasks", methods=["GET"])
+# def get_tasks_all(search):
+#     tasks = task_get_tasks()
+#     return tasks
 
 
 @app.route("/addtask", methods=["POST"])
