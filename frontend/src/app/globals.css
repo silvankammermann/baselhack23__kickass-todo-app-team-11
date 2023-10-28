@@ -38,6 +38,8 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
+
+  --color_violet: #3b006a;
 }
 
 /*
@@ -95,6 +97,12 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}
+
+/* different background color based on route */
+
+.bgViolet {
+  background-color: var(--color_violet); /* color for home page */
 }
 
 a {
