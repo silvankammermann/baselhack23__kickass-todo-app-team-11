@@ -2,19 +2,19 @@ from flask import jsonify
 
 mock_user = {
     "username": "john_doe",
-    "characteristics": ["Musical", "Extrovert", "Social", "Ambivalent", "Humorous"]
+    "characteristics": ["extrovert", "night", "sportive", "musical", "calm"]
 }
 
 mock_characteristics = [
-    "Extrovert",
-    "Night-Active",
-    "Social",
-    "Sportive",
-    "Perfectionist",
-    "Musical",
-    "Humorous",
-    "Calm",
-    "Ambivalent",
+    "extrovert",
+    "night",
+    "social",
+    "sportive",
+    "perfectionist",
+    "musical",
+    "humorous",
+    "calm",
+    "ambivalent",
 ]
 
 def get_user():
