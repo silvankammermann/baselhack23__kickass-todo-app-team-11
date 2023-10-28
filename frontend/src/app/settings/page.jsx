@@ -42,14 +42,14 @@ export default function Settings() {
   }, []);
 
   const isActive = (tempChar) => {
-    return userData.characteristics.includes(tempChar);
+    return userData?.characteristics.includes(tempChar);
   };
 
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Profile</h1>
 
-      {userData && characteristics.length > 0 ? (
+      {userData.username && characteristics.length > 0 ? (
         <>
           <div style={{ textAlign: "center" }}>
             <Image
