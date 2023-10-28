@@ -2,6 +2,7 @@
 from flask import Flask
 import json
 import task_handling
+import db_controller
 
 app = Flask(__name__)
 
@@ -14,7 +15,16 @@ def get_tasks():
 
     sorted_tasks = task_handling.order_tasks()
 
+    db = db_controller.call_database()
+
     return sorted_tasks
+
+
+@app.route("/addtask")
+def add_tasks():
+    sorted_tasks = task_handling.order_tasks()
+    return sorted_tasks
+
 
 
 if __name__ == "__main__":
