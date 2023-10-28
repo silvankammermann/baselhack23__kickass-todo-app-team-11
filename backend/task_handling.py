@@ -47,7 +47,12 @@ def set_do_later(document_id):
     update_status(document_id, "do_later")
 
 def get_tasks():
-    return list(db_controller.get_task_collection().find({'creation_date': {'$lt': int(time.time())}}).sort("deadline"))
+    data = []
+    for obj in db_controller.get_task_collection().find({'creation_date': {'$lt': int(time.time())}}).sort("deadline"):
+        obj_i = obj
+        obj_i["_id"] = str(obj_i["_id"])
+        data.append(obj_i)
+    return data
 
 def update_score():
     raise NotImplementedError
