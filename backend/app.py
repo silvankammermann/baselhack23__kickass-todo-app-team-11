@@ -1,32 +1,38 @@
 # save this as app.py
-from flask import Flask
 import json
-import task_handling
-import db_controller
+from flask import Flask
+
+from task_handling import set_done as task_set_done
+from task_handling import set_do_later as task_set_later
+from task_handling import add_task as task_add_task
+
+from db_controller import get_task_collection, get_user_collection
+
 
 app = Flask(__name__)
 
-@app.route("/gettasks")
+
+@app.route("/gettasks", methods=["GET"])
 def get_tasks():
-    # with open('dummy_data.json') as task_file:
-    #     tasks_str = task_file.read()
-    #     # tasks = json.load(task_file)
-    #     tasks = json.loads(tasks_str)
-
-    sorted_tasks = task_handling.order_tasks()
-
-    db = db_controller.call_database()
-
-    return sorted_tasks
+    tasks = get_tasks()
+    return tasks
 
 
-@app.route("/addtask")
-def add_tasks():
-    sorted_tasks = task_handling.order_tasks()
-    return sorted_tasks
+@app.route("/addtask", methods=["POST"])
+def add_tasks(tasks: list):
+    for task in tasks:
+        task_add_task(task)
+    return
 
+@app.route("/set_done/<int:task_id>", methods=["POST"])
+def set_done(task_id: int):
+    task_set_done(task_id)
+    return
 
+@app.route("/set_do_later/<int:task_id>", methods=["POST"])
+def do_later(task_id: int):
+    task_set_later(task_id)
+    return
 
 if __name__ == "__main__":
     app.run()
-
