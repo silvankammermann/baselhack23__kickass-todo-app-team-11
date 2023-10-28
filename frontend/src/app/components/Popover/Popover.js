@@ -9,6 +9,8 @@ export default function Popover({ trigger, children, ...props }) {
   };
   const backgroundActive = {
     opacity: ".5",
+    display: "block",
+    visibility: "visible",
   };
 
   const toggle = () => {
