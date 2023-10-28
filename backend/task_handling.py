@@ -46,7 +46,24 @@ def set_done(document_id):
 def set_do_later(document_id):
     update_status(document_id, "do_later")
 
-def get_tasks(search=""):
+
+def sort_tasks(sorting, data):
+    """
+    One sorting function for now, can update with more later
+    """
+    
+    if sorting == "importance":
+        return sorted(data, key=lambda task: task["importance"], reverse=True)
+
+    
+    if sorting == "importance-deadline":
+        return sorted(data, key=lambda task: (task["importance"], task["deadline"]), reverse=True)
+
+    return data
+
+
+
+def get_tasks(search="", sorting="deadline"):
     data = []
     search_criteria = {
         'creation_date': {'$lt': int(time.time())}
@@ -59,6 +76,9 @@ def get_tasks(search=""):
         obj_i = obj
         obj_i["_id"] = str(obj_i["_id"])
         data.append(obj_i)
+
+    if sorting != "deadline":
+        data = sort_tasks(sorting, data)
     return data
 
 
