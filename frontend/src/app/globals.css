@@ -61,8 +61,8 @@ body {
 
 /* different background color based on route */
 
-.bgViolet {
-  background-color: var(--color_violet); /* color for home page */
+.bgPurple {
+  background-color: var(--color_purple); /* color for home page */
 }
 
 a {
