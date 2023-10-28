@@ -7,7 +7,6 @@ import styles from "@/app/page.module.css";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
 
-
 /*
 export const metadata = {
   title: "Kick Ass Todo App",
@@ -27,6 +26,7 @@ export default function RootLayout({ children }) {
     // therefore i inserted this little hacky effect here
     if (window.location.pathname === "/tinder") {
       document.body.classList.add("bgPurple");
+      document.body.classList.add("tinderPage");
     }
   }, []);
 
