@@ -14,13 +14,14 @@ from db_controller import get_task_collection, get_user_collection
 
 app = Flask(__name__)
 
+# call like this: http://127.0.0.1:5000/gettasks/foo
 @app.route("/<search>", defaults={'search': None})
-@app.route("/gettasks/<search>", methods=["GET"])
+@app.route("/get-tasks/<search>", methods=["GET"])
 def get_tasks(search):
-    # call like this: http://127.0.0.1:5000/gettasks/foo
-    print(search)
-    tasks = task_get_tasks()
-    return tasks
+    
+    if search is None:
+        return task_get_tasks()
+    return {}
 
 
 # @app.route("/gettasks", methods=["GET"])
@@ -29,18 +30,18 @@ def get_tasks(search):
 #     return tasks
 
 
-@app.route("/addtask", methods=["POST"])
+@app.route("/add-task", methods=["POST"])
 def add_tasks(tasks: list):
     for task in tasks:
         task_add_task(task)
     return
 
-@app.route("/set_done/<int:task_id>", methods=["POST"])
+@app.route("/set-done/<int:task_id>", methods=["POST"])
 def set_done(task_id: int):
     task_set_done(task_id)
     return
 
-@app.route("/set_do_later/<int:task_id>", methods=["POST"])
+@app.route("/set-do-later/<int:task_id>", methods=["POST"])
 def do_later(task_id: int):
     task_set_later(task_id)
     return
