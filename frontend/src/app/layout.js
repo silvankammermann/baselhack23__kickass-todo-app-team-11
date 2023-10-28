@@ -1,6 +1,5 @@
 "use client";
 
-import { Inter } from "next/font/google";
 import "./globals.css";
 import "./atomics.css";
 import "@/app/fonts/Tanker/Fonts/WEB/css/tanker.css";
@@ -8,7 +7,6 @@ import styles from "@/app/page.module.css";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
 
-const inter = Inter({ subsets: ["latin"] });
 
 /*
 export const metadata = {
@@ -34,7 +32,7 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <Header title={`Your tasks`} />
         <main className={styles.main}>
           <div className={styles.main__inner}>{children}</div>
