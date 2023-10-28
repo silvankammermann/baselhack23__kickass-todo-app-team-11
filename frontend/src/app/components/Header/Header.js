@@ -4,7 +4,7 @@ import Image from "next/image";
 import Popover from "@/app/components/Popover/Popover";
 import Settings from "@/app/components/Settings/Settings";
 
-export default function Header({title}) {
+export default function Header({ title }) {
   const pbDimenstions = 30
 
   return (
