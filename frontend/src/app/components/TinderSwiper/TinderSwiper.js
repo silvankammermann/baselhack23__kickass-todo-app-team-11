@@ -1,12 +1,22 @@
-import styles from "./TinderSwiper.module.css";
+"use client";
 
-const TinderSwiper = ({ taskName }) => {
+import React, { useState } from "react";
+import styles from "./TinderSwiper.module.css";
+import TinderCard from "react-tinder-card";
+
+const TinderSwiper = ({ taksId, taskName }) => {
   return (
-    <div className={styles.container}>
-      <div className={styles.colWrap}>
-        <span>{taskName}</span>
+    <>
+      <TinderCard>
+        <div className={styles.container}>
+          <span className="h1">{taskName}</span>
+        </div>
+      </TinderCard>
+      <div>
+        <button>LEFT</button>
+        <button>RIGHT</button>
       </div>
-    </div>
+    </>
   );
 };
 
