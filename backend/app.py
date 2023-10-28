@@ -17,10 +17,7 @@ app = Flask(__name__)
 @app.route("/<search>", defaults={'search': None})
 @app.route("/get-tasks/<search>", methods=["GET"])
 def get_tasks(search):
-    
-    if search is None:
-        return task_get_tasks()
-    return {}
+    return task_get_tasks(search)
 
 
 # @app.route("/gettasks", methods=["GET"])
