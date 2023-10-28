@@ -51,7 +51,7 @@ export default function Settings() {
 
       {userData.username && characteristics.length > 0 ? (
         <>
-          <div style={{ textAlign: "center" }}>
+          <div className="centeredText">
             <Image
               width={100}
               height={100}

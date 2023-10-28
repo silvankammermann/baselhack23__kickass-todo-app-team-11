@@ -32,8 +32,8 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body className="bgPurple">
-        <Header title={`Your tasks`} />
+      <body className="bgDarkPurple">
+        <Header title={`My tasks`} />
         <main className={styles.main}>
           <div className={styles.main__inner}>{children}</div>
         </main>
