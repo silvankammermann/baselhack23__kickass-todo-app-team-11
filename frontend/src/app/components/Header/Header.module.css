@@ -1,12 +1,28 @@
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: var(--gradient_down);
   padding: 3rem 2rem;
 }
 
 .icons {
   display: flex;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .3em;
+  padding-right: .2em;
+  background: var(--color_lightPurple);
+  height: 30px;
+  border-radius: 15px;
+}
+
+.profile__img {
+  transform: translateX(-1px);
 }
 
 .title {
