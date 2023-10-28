@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import styles from "@/app/page.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +19,11 @@ if (usePathname() === "/tinder") {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${colorClass} ${inter.className}`}>{children}</body>
+      <body className={`${colorClass} ${inter.className}`}>
+        <main className={styles.main}>
+          <div className={styles.main__inner}>{children}</div>
+        </main>
+      </body>
     </html>
   );
 }
