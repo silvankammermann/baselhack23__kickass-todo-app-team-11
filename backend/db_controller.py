@@ -13,6 +13,8 @@ cluster_name = "baselhack23.oc5gztg.mongodb.net"
 database_name = "Hack01"
 
 uri = f"mongodb+srv://kickass:{password}@baselhack23.oc5gztg.mongodb.net/?retryWrites=true&w=majority"
+
+
 # Create a new client and connect to the server
 
 def check_connection():
@@ -24,8 +26,27 @@ def check_connection():
     except Exception as e:
         print(e)
 
+
 @app.route('/')
 def call_database():
     client = MongoClient(uri, server_api=ServerApi('1'))
     db = client[database_name]
     return db
+
+
+def get_user_collection():
+    client = MongoClient(uri, server_api=ServerApi('1'))
+    db = client[database_name]
+    collection = db["user"]
+    return collection
+
+
+def get_task_collection():
+    client = MongoClient(uri, server_api=ServerApi('1'))
+    db = client[database_name]
+    collection = db["task"]
+    return collection
+
+
+if __name__=="__main__":
+    get_task_collection()
