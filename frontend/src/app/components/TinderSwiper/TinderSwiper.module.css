@@ -14,3 +14,8 @@
   background-position: center;
   border-radius: 14px;
 }
+
+.decissionTriggers {
+  text-align: center;
+  transform: translateY(-1em);
+}
