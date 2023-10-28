@@ -6,31 +6,6 @@ from datetime import datetime
 
 
 # functionality around task scheduling, task prioritization etc.
-def order_tasks(user_id=None, user_name=None):
-    # replace this later with db access
-    with open('dummy_data.json') as task_file:
-        tasks_str = task_file.read()
-        # tasks = json.load(task_file)
-        tasks = json.loads(tasks_str)
-
-        for task in tasks:
-            # task_urgency = int(task["content"]["urgency"])
-            # task_importance = int(task["content"]["importance"])
-            # task_fun_factor = int(task["content"]["fun_factor"])
-
-            # task_score = task_urgency * task_importance + task_fun_factor
-
-            # task["content"]["score"] = task_score
-            task_deadline_str = task["content"]["deadline"]
-            task_deadline = datetime.strptime(task_deadline_str, '%Y-%m-%d_%H:%M')
-            task["content"]["deadline"] = task_deadline
-
-            # print(task_deadline)    
-        # sorted_tasks = sorted(tasks, key=lambda task: task["content"]["score"])
-        sorted_tasks = sorted(tasks, key=lambda task: task["content"]["deadline"])
-
-    return sorted_tasks
-
 
 def add_task(taskJson):
     try:
@@ -42,9 +17,34 @@ def add_task(taskJson):
         print(f"Error inserting task: {e}")
         return None
 
+def update_status(document_id, new_status):
+    db = db_controller.get_task_collection()
+    filter = {"_id": document_id}
+    update = {"$set": {"status": new_status}}
+
+    try:
+        result = db.update_one(filter, update)
+        return result
+    except pymongo.errors.PyMongoError as e:
+        # Handle any potential errors here
+        print(f"Error inserting task: {e}")
+        return None
+
+
 def get_ordered_tasks(n=10):
     """
     n: max number of task forwarded from the function
     :return list of dicts
     """
+    # todo get current
     return list(db_controller.get_task_collection().find().sort("deadline").limit(n))
+
+
+def set_done(document_id):
+    update_status(document_id, "done")
+
+def set_do_later(document_id):
+    update_status(document_id, "do_later")
+
+def get_tasks():
+    raise NotImplementedError
