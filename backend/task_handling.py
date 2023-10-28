@@ -42,6 +42,20 @@ def add_task(taskJson):
         print(f"Error inserting task: {e}")
         return None
 
+def update_status(document_id, new_status):
+    db = db_controller.get_task_collection()
+    filter = {"_id": document_id}
+    update = {"$set": {"status": new_status}}
+
+    try:
+        result = db.update_one(filter, update)
+        return result
+    except pymongo.errors.PyMongoError as e:
+        # Handle any potential errors here
+        print(f"Error inserting task: {e}")
+        return None
+
+
 def get_ordered_tasks(n=10):
     """
     n: max number of task forwarded from the function
@@ -51,11 +65,11 @@ def get_ordered_tasks(n=10):
     return list(db_controller.get_task_collection().find().sort("deadline").limit(n))
 
 
-def set_done():
-    raise NotImplementedError
+def set_done(document_id):
+    update_status(document_id, "done")
 
-def set_do_later():
-    raise NotImplementedError
+def set_do_later(document_id):
+    update_status(document_id, "do_later")
 
 def get_tasks():
     raise NotImplementedError
