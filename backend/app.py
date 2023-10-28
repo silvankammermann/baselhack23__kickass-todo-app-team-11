@@ -1,6 +1,7 @@
 # save this as app.py
 import json
 from flask import Flask
+from flask import jsonify
 
 from task_handling import set_done as task_set_done
 from task_handling import set_do_later as task_set_later
@@ -15,7 +16,8 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET"])
 def get_tasks():
-    tasks = task_get_tasks()
+    tasks = {"data": task_get_tasks()}
+    # tasks = jsonify
     return tasks
 
 
