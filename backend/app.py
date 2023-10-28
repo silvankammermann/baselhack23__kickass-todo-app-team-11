@@ -4,6 +4,7 @@ from flask import Flask
 from flask import jsonify
 
 from user_handling import get_user as user_get_user
+from user_handling import get_characteristics as user_get_characteristics
 from task_handling import set_done as task_set_done
 from task_handling import set_do_later as task_set_later
 from task_handling import add_task as task_add_task
@@ -39,6 +40,10 @@ def do_later(task_id: int):
 @app.route("/get-user", methods=["GET"])
 def get_user():
     return user_get_user()
+
+@app.route("/get-characteristics", methods=["GET"])
+def get_characteristics():
+    return user_get_characteristics()
 
 if __name__ == "__main__":
     app.run()
