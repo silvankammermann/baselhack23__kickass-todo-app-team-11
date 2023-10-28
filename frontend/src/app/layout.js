@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "./atomics.css";
 import "@/app/fonts/Tanker/Fonts/WEB/css/tanker.css";
 import styles from "@/app/page.module.css";
 import Header from "./components/Header/Header";
@@ -14,7 +15,7 @@ export const metadata = {
 let colorClass = "";
 /*
 if (usePathname() === "/tinder") {
-  colorClass = "bgViolet";
+  colorClass = "bg--purple";
 }
 */
 

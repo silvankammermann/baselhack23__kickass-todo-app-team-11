@@ -1,0 +1,55 @@
+/* ***** Colors */
+
+.color--darkPurple {
+  color: var(--color_darkPurple);
+}
+
+.color--lightPurple {
+  color: var(--color_lightPurple);
+}
+
+.color--purple {
+  color: var(--color_purple);
+}
+
+.color--yellow {
+  color: var(--color_yellow);
+}
+
+/* --- System */
+
+.color--green {
+  color: var(--color__green);
+}
+
+.color--red {
+  color: var(--color__red);
+}
+
+/* ***** Background Colors*/
+
+.bg--darkPurple {
+  color: var(--bg_darkPurple);
+}
+
+.bg--lightPurple {
+  color: var(--bg_lightPurple);
+}
+
+.bg--purple {
+  color: var(--bg_purple);
+}
+
+.bg--yellow {
+  color: var(--bg_yellow);
+}
+
+/* --- System */
+
+.bg--green {
+  color: var(--bg__green);
+}
+
+.bg--red {
+  color: var(--bg__red);
+}
