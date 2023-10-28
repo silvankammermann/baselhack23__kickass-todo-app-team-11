@@ -1,4 +1,4 @@
-// File: /Users/silvankammermann/Desktop/kickass-todo-app-team-11/app/layout.tsx
+// File: C:\Users\jhado\Documents\_Coding\baselhack_2023\flask test\kickass-todo-app-team-11\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
