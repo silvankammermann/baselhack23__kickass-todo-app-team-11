@@ -47,4 +47,15 @@ def get_ordered_tasks(n=10):
     n: max number of task forwarded from the function
     :return list of dicts
     """
+    # todo get current
     return list(db_controller.get_task_collection().find().sort("deadline").limit(n))
+
+
+def set_done():
+    raise NotImplementedError
+
+def set_do_later():
+    raise NotImplementedError
+
+def get_tasks():
+    raise NotImplementedError
