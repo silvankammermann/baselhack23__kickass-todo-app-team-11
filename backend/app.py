@@ -3,6 +3,7 @@ import json
 from flask import Flask
 from flask import jsonify
 
+from user_handling import get_user as user_get_user
 from task_handling import set_done as task_set_done
 from task_handling import set_do_later as task_set_later
 from task_handling import add_task as task_add_task
@@ -43,6 +44,10 @@ def set_done(task_id: int):
 def do_later(task_id: int):
     task_set_later(task_id)
     return
+
+@app.route("/get-user", methods=["GET"])
+def get_user():
+    return user_get_user()
 
 if __name__ == "__main__":
     app.run()
