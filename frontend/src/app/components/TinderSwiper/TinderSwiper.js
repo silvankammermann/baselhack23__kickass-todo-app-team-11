@@ -13,9 +13,9 @@ const TinderSwiper = ({ taksId, taskName }) => {
         </div>
       </TinderCard>
       <div className={styles.decissionTriggers}>
-        <button className="h2 circle bgRed colorWhite">Later</button>
-        <button className="h2 circle bgGreen colorWhite">Yes!</button>
-      </div>
+        <button style={className = "h2 circle bgRed colorWhite" > Later</button>
+      <button className="h2 circle bgGreen colorWhite">Yes!</button>
+    </div >
     </>
   );
 };

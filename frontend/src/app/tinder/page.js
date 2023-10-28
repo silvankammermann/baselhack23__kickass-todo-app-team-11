@@ -5,7 +5,7 @@ import TinderSwiper from "../components/TinderSwiper/TinderSwiper";
 export default function Tinder() {
   return (
     <>
-      <TinderSwiper taskId="123" taskName="Update your node JS dependencies" />
+      <TinderSwiper taskId="123" taskName="Do the laundry" />
     </>
   );
 }
