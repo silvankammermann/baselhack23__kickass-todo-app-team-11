@@ -48,3 +48,6 @@ def set_do_later(document_id):
 
 def get_tasks():
     return list(db_controller.get_task_collection().find({'creation_date': {'$lt': int(time.time())}}).sort("deadline"))
+
+def update_score():
+    raise NotImplementedError
