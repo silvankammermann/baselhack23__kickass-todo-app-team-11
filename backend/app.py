@@ -55,7 +55,7 @@ def get_user():
 def get_characteristics():
     return user_get_characteristics()
 
-@app.route("/get-subtasks/<int:task_id>", methods=["POST"])
+@app.route("/get-subtasks/<int:task_id>", methods=["GET"])
 def get_subtask(task_id):
     return task_get_subtask(task_id)
 
