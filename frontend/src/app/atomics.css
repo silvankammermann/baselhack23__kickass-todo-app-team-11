@@ -1,0 +1,76 @@
+/* ***** Colors */
+
+.colorDarkPurple {
+  color: var(--color_darkPurple);
+}
+
+.colorLightPurple {
+  color: var(--color_lightPurple);
+}
+
+.colorPurple {
+  color: var(--color_purple);
+}
+
+.colorYellow {
+  color: var(--color_yellow);
+}
+
+/* --- System */
+
+.colorWhite {
+  color: var(--color_white);
+}
+
+.colorGreen {
+  color: var(--color_green);
+}
+
+.colorRed {
+  color: var(--color_red);
+}
+
+/* ***** Background Colors*/
+
+.bgDarkPurple {
+  background: var(--color_darkPurple);
+}
+
+.bgLightPurple {
+  background: var(--color_lightPurple);
+}
+
+.bgPurple {
+  background: var(--color_purple);
+}
+
+.bgYellow {
+  background: var(--color_yellow);
+}
+
+/* --- System */
+
+.bgGreen {
+  background: var(--color_green);
+}
+
+.bgRed {
+  background: var(--color_red);
+}
+
+/* --- */
+
+.centeredText {
+  text-align: center;
+}
+
+/* ***** Border radius */
+
+.circle {
+  display: inline-block;
+  border: 0;
+  padding: 0;
+  border-radius: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0 0.5em;
+}
