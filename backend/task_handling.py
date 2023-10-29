@@ -73,11 +73,11 @@ def update_status(document_id, new_status):
         result = db.update_one(filter, update)
     elif new_status == "done":
         document = db_controller.get_task_collection().find_one(
-            {'_id': document_id},
+            {'_id': ObjectId(document_id)},
             {'score': 1, '_id': 0}
         )
-        # increase_user_score(document['score'])
-        increase_user_score(1)
+        increase_user_score(document['score'])
+        # increase_user_score(1)
 
     update = {"$set": {"status": new_status}}
 
