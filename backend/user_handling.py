@@ -16,13 +16,13 @@ mock_characteristics = [
 
 
 def get_user():
-    original_directory = os.getcwd()
-    new_directory = "/backend"
-    os.chdir(os.path.join(original_directory, new_directory))
-    with open("user.json") as f:
-        mock_user = json.load(f)
-
-    os.chdir(original_directory)
+    path = os.getcwd()
+    if "backend" in path:
+        with open("user.json") as f:
+            mock_user = json.load(f)
+    else:
+        with open("backend/user.json") as f:
+            mock_user = json.load(f)
 
     return mock_user
 

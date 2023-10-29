@@ -56,9 +56,7 @@ def do_later(task_id):
 
 @app.route("/get-user", methods=["GET"])
 def get_user():
-    with open("user.json") as f:
-        mock_user = json.load(f)
-    return mock_user
+    return get_user()
 
 @app.route("/get-characteristics", methods=["GET"])
 def get_characteristics():
