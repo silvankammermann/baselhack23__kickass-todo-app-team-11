@@ -32,6 +32,11 @@
   transform-origin: center;
 }
 
+.menubar {
+  width: 100%;
+  transform: translate(-3em, -2em);
+}
+
 .card:nth-child(even) .container {
   transform: rotate(5deg);
 }
