@@ -39,8 +39,7 @@ def add_task():
 @app.route("/<task_id>", defaults={'task_id': None})
 def set_done(task_id):
     task_set_done(task_id)
-    return 
-
+    return
 
 @app.route("/set-do-later/<int:task_id>", methods=["POST"])
 def do_later(task_id: int):
