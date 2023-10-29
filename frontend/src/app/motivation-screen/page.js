@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
-import random from "@/app/utils.js";
+import { random } from "@/app/utils.js";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
