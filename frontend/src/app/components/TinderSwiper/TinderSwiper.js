@@ -55,7 +55,7 @@ const TinderSwiper = ({ tasks }) => {
     <>
       <div className={styles.menubar}>
         <Link href="/tasklist">
-          <Image 
+          <Image
             src="/images/menu-icon.svg"
             width={50}
             height={50}
@@ -72,7 +72,21 @@ const TinderSwiper = ({ tasks }) => {
             onCardLeftScreen={(direction) => handleOutOfFrame(direction, _id)}
           >
             <div className={styles.container}>
-              <span className="h1">{name}</span>
+              <div>
+                <Image
+                  // className={styles.logo}
+                  width={30}
+                  height={30}
+                  src="/images/__importance-1.svg"
+                  style={{
+                    height: "auto",
+                    display: "block",
+                    margin: ".5em auto",
+                  }}
+                  alt="Icon"
+                />
+                <span className="h1">{task.name}</span>
+              </div>
             </div>
           </TinderCard>
         ))}
