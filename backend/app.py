@@ -42,7 +42,6 @@ def set_done(task_id):
     task_set_done(task_id)
     return task_get_tasks(sorting="importance-deadline")
 
-
 @app.route("/set-do-later/<int:task_id>", methods=["POST"])
 def do_later(task_id: int):
     task_set_later(task_id)
@@ -56,7 +55,7 @@ def get_user():
 def get_characteristics():
     return user_get_characteristics()
 
-@app.route("/get-subtasks/<int:task_id>", methods=["POST"])
+@app.route("/get-subtasks/<int:task_id>", methods=["GET"])
 def get_subtask(task_id):
     return task_get_subtask(task_id)
 
