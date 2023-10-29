@@ -16,7 +16,7 @@ export default function Tinder() {
   // TODO: might need refactoring -> maybe move to
   const fetchTaskData = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/gettasks`);
+      const response = await fetch(`${process.env.API_BASE_URL}/gettasks`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
