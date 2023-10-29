@@ -1,7 +1,12 @@
 import json
+import random
+
+from bson import ObjectId
+
 import db_controller
 import pymongo
 import time
+from get_subtasks import generate_subtasks
 
 import numpy as np
 
@@ -13,6 +18,7 @@ from datetime import datetime
 def add_task(taskJson):
     taskJson["creation_date"] = int(time.time())
     taskJson["status"] = "todo"
+    taskJson["score"] = taskJson['urgency'] + taskJson['importance']
 
     date_time = datetime.strptime(taskJson["deadline"], '%Y-%m-%dT%H:%M')
     timestamp = date_time.timestamp()
@@ -30,7 +36,11 @@ def add_task(taskJson):
 
 def update_status(document_id, new_status):
     db = db_controller.get_task_collection()
-    filter = {"_id": document_id}
+    filter = {"_id": ObjectId(document_id)}
+    if new_status == "do_later":
+        update = {'$inc': {'score': 1}}
+        result = db.update_one(filter, update)
+
     update = {"$set": {"status": new_status}}
 
     try:
@@ -69,11 +79,13 @@ def sort_tasks(sorting, data):
     if sorting == "importance-deadline":
         return sorted(data, key=lambda task: (task["importance"], task["deadline"]), reverse=True)
 
+    if sorting == "importance-urgency":
+        return sorted(data, key=lambda task: (task["urgency"], task["importance"], -task["score"]), reverse=True)
+
     return data
 
 
-
-def get_tasks(search="", sorting="deadline"):
+def get_tasks(search="", sorting="importance-urgency"):
     data = []
     search_criteria = {
         'creation_date': {'$lt': int(time.time())}
@@ -81,10 +93,10 @@ def get_tasks(search="", sorting="deadline"):
     if search:
         search_criteria['name'] = {'$regex': search, '$options': 'i'}
 
-    for _id in db_controller.get_task_collection().find({}, {'_id': 1}):
-        update_score(_id)
+    # for document in db_controller.get_task_collection().find():
+    #     update_score(document)
 
-    results = db_controller.get_task_collection().find({'$and': [search_criteria]}).sort("score")
+    results = db_controller.get_task_collection().find({'$and': [search_criteria]})
     for obj in results:
         obj_i = obj
         obj_i["_id"] = str(obj_i["_id"])
@@ -94,16 +106,24 @@ def get_tasks(search="", sorting="deadline"):
         data = sort_tasks(sorting, data)
     return data
 
+def get_subtask(task_id):
+    filter = {"_id": task_id}
+    task = db_controller.get_task_collection().find_one(filter)
+    subtasks = generate_subtasks(task)
+    return subtasks
 
-def update_score(document_id):
+def update_score(document):
     db = db_controller.get_task_collection()
-    score = calculate_importance_score(db.find_one({'_id': document_id["_id"]}))
+    score = calculate_importance_score(document)
 
-    filter = {"_id": document_id}
-    update = {"$set": {"score": score}}
+    # The query to find the document you want to update
+    query = {"_id": document["_id"]}
 
-    result = db.update_one(filter, update)
-    return result
+    # The new value you want to set
+    new_values = {"$set": {"score": score}}
+    db.update_one(query, new_values)
+
+    return None
 
 
 def calculate_importance_score(task):
@@ -111,18 +131,12 @@ def calculate_importance_score(task):
     time_until_deadline = int(task['deadline']) - current_time
     time_until_deadline = max(time_until_deadline, 1)  # Avoid division by zero
 
-    urgency_weight = 3
-    importance_weight = 3
-    fun_factor_weight = 2
-    duration_weight = -1  # Longer duration reduces score
-    deadline_weight = -2  # Closer deadline increases score
+    urgency_weight = 1
+    importance_weight = 1
 
-    score = (int(task['urgency']) * urgency_weight +
-             int(task['importance']) * importance_weight +
-             # int(task['fun_factor']) * fun_factor_weight +
-             int(task['duration']) * duration_weight +
-             int(time_until_deadline * deadline_weight))
+    score = (int(task['urgency']) * urgency_weight +  # important
+             int(task['importance']) * importance_weight)  # important
 
-    score = 1/(1+np.exp(-np.clip(score, a_min=-100, a_max=100)))
+    # score = 1/(1+np.exp(-np.clip(score, a_min=-100, a_max=100)))
 
     return score
