@@ -43,10 +43,10 @@ const TinderSwiper = ({ tasks }) => {
     }
     if (direction === "left") {
       const url = `http://localhost:5000/set-do-later/${id}`;
-      fetch(url, {}).then((r) => r);
+      fetch(url, {
+        method: "POST",
+      }).then((r) => r);
     }
-
-    //console.log(id);
   };
 
   return (
