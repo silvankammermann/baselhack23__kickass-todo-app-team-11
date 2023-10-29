@@ -150,6 +150,16 @@ button {
   cursor: pointer;
 }
 
+/***** SVG shapes */
+.svgWrap {
+  position: relative;
+}
+
+.svgWrap svg {
+  width: auto;
+  height: 100%;
+}
+
 input {
   font-family: "Tanker-Regular" !important;
   font-size: 1.1rem !important;
