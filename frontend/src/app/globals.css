@@ -159,3 +159,11 @@ button {
   width: auto;
   height: 100%;
 }
+
+label {
+  font-family: "Tanker-Regular" !important;
+}
+
+label span {
+  font-family: "Tanker-Regular" !important;
+}

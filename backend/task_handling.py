@@ -9,6 +9,14 @@ from datetime import datetime
 # functionality around task scheduling, task prioritization etc.
 
 def add_task(taskJson):
+    taskJson["creation_date"] = int(time.time())
+    taskJson["status"] = "todo"
+
+    date_time = datetime.strptime(taskJson["deadline"], '%Y-%m-%dT%H:%M')
+    timestamp = date_time.timestamp()
+    timestamp_as_int = int(timestamp)
+    taskJson["deadline"] = timestamp_as_int
+
     try:
         db = db_controller.get_task_collection()
         result = db.insert_one(taskJson)

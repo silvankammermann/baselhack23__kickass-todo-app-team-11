@@ -1,6 +1,6 @@
 # save this as app.py
 import json
-from flask import Flask
+from flask import Flask, request
 from flask import jsonify
 from flask_cors import CORS # needs pip install Flask-CORS
 
@@ -22,11 +22,17 @@ CORS(app)
 def get_tasks(search):
     return task_get_tasks(search, sorting="importance-deadline")
 
-@app.route("/add-task", methods=["POST"])
+@app.route("/add-tasks", methods=["POST"])
 def add_tasks(tasks: list):
     for task in tasks:
         task_add_task(task)
     return
+
+@app.route("/add-task", methods=["POST"])
+def add_task():
+    task_data = request.get_json()
+    task_add_task(task_data)
+    return task_get_tasks(sorting="importance-deadline")
 
 @app.route("/set-done/<int:task_id>", methods=["POST"])
 def set_done(task_id: int):
