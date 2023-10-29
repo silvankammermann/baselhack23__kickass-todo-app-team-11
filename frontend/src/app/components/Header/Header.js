@@ -32,10 +32,13 @@ export default function Header({ title }) {
         ) : (
           <Image
             className={styles.logo}
-            src="/images/sloth-profile.svg"
-            width={pbDimenstions}
-            height={pbDimenstions}
-            alt="Profile Pic"
+            width={130}
+            height={100}
+            src="/images/kickass-logo.svg"
+            style={{
+              height: "auto",
+            }}
+            alt="Logo"
           />
         )}
       </header>

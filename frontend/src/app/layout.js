@@ -20,13 +20,13 @@ export default function RootLayout({ children }) {
 
   // set body classes
   let bodyClasses = "bgDarkPurple";
-  if (pathname === "/tinder") {
-    bodyClasses = "bgPurple tinderPage";
+  if (pathname === "/") {
+    bodyClasses = "bgPurple homePage";
   }
 
   // define header content
   let headerTitle = "";
-  if (pathname === "/") {
+  if (pathname === "/tasklist") {
     headerTitle = "My tasks";
   }
 
