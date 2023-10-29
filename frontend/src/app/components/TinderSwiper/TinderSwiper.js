@@ -10,6 +10,8 @@ import Image from "next/image";
 const TinderSwiper = ({ tasks }) => {
   const router = useRouter();
 
+  console.log(tasks)
+
   // Initial state for remaining tasks
   const [remainingTasks, setRemainingTasks] = useState(tasks);
   const [currentTask, setCurrentTask] = useState(tasks);
@@ -52,6 +54,15 @@ const TinderSwiper = ({ tasks }) => {
     }
   };
 
+  let importanceClass;
+  if (currentTask.importance === 1) {
+    importanceClass = styles.cardImportanceLow;
+  } else if (currentTask.importance === 2) {
+    importanceClass = styles.cardImportanceMedium;
+  } else {
+    importanceClass = stylesstyles.cardImportanceMedium;
+  }
+
   return (
     <>
       <div className={styles.menubar}>
@@ -68,7 +79,7 @@ const TinderSwiper = ({ tasks }) => {
         {tasks.map(({ _id, name }, index) => (
           <TinderCard
             key={_id}
-            className={styles.card}
+            className={`${styles.card} ${importanceClass}`}
             ref={cardRefs[index]}
             onCardLeftScreen={(direction) => handleOutOfFrame(direction, _id)}
           >
