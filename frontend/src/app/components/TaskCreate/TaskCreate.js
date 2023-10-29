@@ -229,7 +229,7 @@ const TaskCreate = () => {
             <RadioGroup
               row
               aria-label="options"
-              name="fun_factor"
+              name="task_type"
               value={repeat}
               onChange={handleRepeatChange}
               required
