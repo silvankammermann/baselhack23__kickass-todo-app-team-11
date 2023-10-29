@@ -19,6 +19,7 @@ mock_characteristics = [
 def get_user():
     collection = get_user_collection()
     user = collection.find_one({"username": "john_doe"})
+    user["_id"] = str(user["_id"])
     return user
 
 
@@ -32,3 +33,5 @@ def increase_user_score(score=0):
 
 def get_characteristics():
     return jsonify(mock_characteristics)
+
+# get_user()
