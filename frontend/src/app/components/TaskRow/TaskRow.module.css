@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -15,4 +15,8 @@
   position: absolute;
   top: -.5em;
   right: -1.5em;
+}
+
+.taskIcon {
+  margin: 0 auto;
 }
