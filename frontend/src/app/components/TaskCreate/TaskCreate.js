@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import styles from "./TaskCreate.module.css";
-import { Grid, FormControl, RadioGroup, FormControlLabel, Radio, Button } from "@mui/material";
+import {Grid, FormControl, RadioGroup, FormControlLabel, Radio, Button} from "@mui/material";
 import Input from "../Forms/Input";
+import Image from "next/image";
 
 const TaskCreate = () => {
   const [formData, setFormData] = useState({
@@ -32,15 +33,18 @@ const TaskCreate = () => {
   const urgencyOptions = [
     {
       weight: 1,
-      name: "Maybe one day"
+      name: "Maybe one day",
+      icon: '/images/__importance-1.png'
     },
     {
       weight: 2,
-      name: "To be done ASAP"
+      name: "To be done ASAP",
+      icon: '/images/__importance-2.png'
     },
     {
       weight: 3,
-      name: "Right now!"
+      name: "Right now!",
+      icon: '/images/__importance-3.png'
     }
   ];
 
@@ -60,7 +64,7 @@ const TaskCreate = () => {
   ];
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const {name, value} = event.target;
     setFormData({
       ...formData,
       [name]: value,
@@ -111,8 +115,8 @@ const TaskCreate = () => {
             onChange={handleChange}
             type="text"
             value={formData.name}
-            name="taskName"
-            style={{ width: "100%" }}
+            name="name"
+            style={{width: "100%"}}
           />
         </Grid>
         <Grid item xs={6}>
@@ -152,11 +156,12 @@ const TaskCreate = () => {
               <Grid container spacing={4}>
                 {importanceOptions.map((item) => (
                   <Grid item key={`importance_${item.weight}`} xs={4}>
-                    <div className={`${styles.taskCreate__radio} ${importance == item.weight ? styles.taskCreate__radio__active : ""
+                    <div
+                      className={`${styles.taskCreate__radio} ${importance == item.weight ? styles.taskCreate__radio__active : ""
                       }`}>
                       <FormControlLabel
                         value={item.weight}
-                        control={<Radio sx={{ display: "none" }} />} // Hide the radio button
+                        control={<Radio sx={{display: "none"}}/>} // Hide the radio button
                         label={item.name}
                       />
                     </div>
@@ -182,12 +187,32 @@ const TaskCreate = () => {
               <Grid container spacing={4}>
                 {urgencyOptions.map((item) => (
                   <Grid item key={`urgency_${item.weight}`} xs={4}>
-                    <div className={`${styles.taskCreate__radio} ${urgency == item.weight ? styles.taskCreate__radio__active : ""
+                    <div
+                      className={`${styles.taskCreate__radio} ${urgency == item.weight ? styles.taskCreate__radio__active : ""
                       }`}>
                       <FormControlLabel
                         value={item.weight}
-                        control={<Radio sx={{ display: "none" }} />} // Hide the radio button
-                        label={item.name}
+                        control={<Radio sx={{display: "none"}}/>} // Hide the radio button
+                        label={
+                          <>
+                            <div style={{display: 'flex', 'justifyContent': 'center'}}>
+                              <Image
+                              width={30}
+                              height={30}
+                              src={item.icon}
+                              alt="Icon"
+                              style={{
+                                height: "auto",
+                                maxWidth: "100%",
+                                marginBottom: '10px'
+                              }}
+                            />
+                            </div>
+                            <div style={{display: 'flex', 'justifyContent': 'center'}}>
+                              {item.name}
+                            </div>
+                          </>
+                        }
                       />
                     </div>
                   </Grid>
@@ -212,11 +237,12 @@ const TaskCreate = () => {
               <Grid container spacing={4}>
                 {repeatOptions.map((item) => (
                   <Grid item key={`repeat_${item.weight}`} xs={4}>
-                    <div className={`${styles.taskCreate__radio} ${repeat == item.weight ? styles.taskCreate__radio__active : ""
-                      }`}>
+                    <div
+                      className={`${styles.taskCreate__radio} ${repeat === item.weight ? styles.taskCreate__radio__active + ' ' + styles[`taskCreate__radio__active__${item.weight}`] : ''}`}
+                    >
                       <FormControlLabel
                         value={item.weight}
-                        control={<Radio sx={{ display: "none" }} />} // Hide the radio button
+                        control={<Radio sx={{display: "none"}}/>} // Hide the radio button
                         label={item.name}
                       />
                     </div>

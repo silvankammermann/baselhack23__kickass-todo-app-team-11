@@ -9,11 +9,6 @@
   color: var(--color_darkPurple);
 }
 
-.taskCreate__radio__active {
-  background-color: var(--color_yellow);
-  border: 0.13rem solid var(--color_yellow);
-}
-
 .taskCreate__radio label {
   position: absolute;
   height: 100%;
@@ -25,4 +20,21 @@
   white-space: nowrap;
   margin: 0;
   color: var(--color_darkPurple);
+}
+
+.taskCreate__radio__active {
+  background-color: var(--color_yellow);
+  border: 0.13rem solid var(--color_yellow);
+}
+
+.taskCreate__radio__active__2 {
+  background-color: var(--color_lightPurple);
+  border: 0.13rem solid var(--color_lightPurple);
+}
+.taskCreate__radio__active__3 {
+  background-color: var(--color_darkPurple);
+  border: 0.13rem solid var(--color_darkPurple);
+}
+.taskCreate__radio__active__3 label {
+  color: var(--color_white);
 }
