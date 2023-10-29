@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { CircularProgress, Typography, Grid } from "@mui/material";
-import TextField from '@mui/material/TextField';
-
+import TextField from "@mui/material/TextField";
 
 export default function Settings() {
   const [userData, setUserData] = useState({});
@@ -12,7 +11,9 @@ export default function Settings() {
 
   const fetchCharacteristics = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/get-characteristics");
+      const response = await fetch(
+        `${process.env.API_BASE_URL}/get-characteristics`
+      );
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -25,7 +26,7 @@ export default function Settings() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/get-user");
+      const response = await fetch(`${process.env.API_BASE_URL}/get-user`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -75,8 +76,9 @@ export default function Settings() {
                 <Image
                   width={400}
                   height={400}
-                  src={`/images/${characteristic}${isActive(characteristic) ? "_active" : ""
-                    }.png`}
+                  src={`/images/${characteristic}${
+                    isActive(characteristic) ? "_active" : ""
+                  }.png`}
                   alt="Icon"
                   style={{
                     width: "100%",
