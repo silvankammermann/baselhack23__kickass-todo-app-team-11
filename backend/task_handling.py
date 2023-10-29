@@ -34,12 +34,11 @@ def add_task(taskJson):
 
     # No Subtasks
     tasks = []
-    if makes_sense_to_divide_task(taskJson["name"]):
+    if True or makes_sense_to_divide_task(taskJson["name"]):
         taskJson["creation_date"] = int(time.time())
         taskJson["status"] = "open"
         taskJson["score"] = taskJson['urgency'] + taskJson['importance']
         taskJson["delayed_int"] = 0
-        taskJson["fun_factor"] = 0
 
         tasks.append(taskJson)
     # With Subtasks

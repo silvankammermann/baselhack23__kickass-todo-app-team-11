@@ -15,7 +15,6 @@ export default function Popover({ trigger, children, ...props }) {
 
   const toggle = () => {
     setOpen(!open);
-    console.log("toggle");
   };
 
   return (
