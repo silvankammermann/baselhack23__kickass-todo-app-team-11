@@ -15,7 +15,7 @@ export default function Header({ title }) {
             <div className={styles.profile}>
               <Image
                 className={styles.profile__img}
-                src="/images/sloth-profile.svg"
+                src="/images/Kickass_profile-sloth.png"
                 width={pbDimenstions}
                 height={pbDimenstions}
                 alt="Profile Pic"

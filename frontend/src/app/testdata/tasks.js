@@ -1,7 +1,8 @@
 const tasks = [
   {
     id: 123,
-    name: "Bad putzen",
+    _id: 123,
+    name: "Test Data 1",
     urgency: 3,
     importance: 2,
     fun_factor: 1,
@@ -13,7 +14,8 @@ const tasks = [
   },
   {
     id: 234,
-    name: "Steuererklärung",
+    _id: 234,
+    name: "Test Data 2",
     urgency: 1,
     importance: 2,
     fun_factor: 1,
@@ -25,7 +27,8 @@ const tasks = [
   },
   {
     id: 345,
-    name: "Matheaufgaben",
+    _id: 345,
+    name: "Test Data 3",
     urgency: 3,
     importance: 2,
     fun_factor: 1,
@@ -37,7 +40,8 @@ const tasks = [
   },
   {
     id: 456,
-    name: "Einkaufen",
+    _id: 456,
+    name: "Test Data 4",
     urgency: 3,
     importance: 2,
     fun_factor: 1,

@@ -1,6 +1,7 @@
 import json
 import os
 from flask import jsonify
+from db_controller import get_user_collection
 
 mock_characteristics = [
     "extrovert",
@@ -16,24 +17,21 @@ mock_characteristics = [
 
 
 def get_user():
-    path = os.getcwd()
-    if "backend" in path:
-        with open("user.json") as f:
-            mock_user = json.load(f)
-    else:
-        with open("backend/user.json") as f:
-            mock_user = json.load(f)
-
-    return mock_user
+    collection = get_user_collection()
+    user = collection.find_one({"username": "john_doe"})
+    user["_id"] = str(user["_id"])
+    return user
 
 
 def increase_user_score(score=0):
-    with open("user.json") as f:
-        mock_user = json.load(f)
-    mock_user["score"] += score
-    with open('data.json', 'w') as f:
-        json.dump(mock_user, f)
+    filter = {"username": "john_doe"}
+    collection = get_user_collection()
+    update = {'$inc': {'score': score}}
+    result = collection.update_one(filter, update)
+    return result
 
 
 def get_characteristics():
     return jsonify(mock_characteristics)
+
+# get_user()
