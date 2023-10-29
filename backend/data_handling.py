@@ -5,10 +5,7 @@ def check_new_task(task):
         'name': str(task['name']),
         'urgency': int(task['urgency']), 
         'importance': int(task['importance']), 
-        'creation_date': task['creation_date'], 
-        'status': str(task['status']), 
-        'delayed_int': int(task['delayed_int']), 
-        'task_type': str(task['task_type'])
+        'delayed_int': int(0),
         }
     
     return task_clean

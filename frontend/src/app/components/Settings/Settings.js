@@ -49,7 +49,7 @@ export default function Settings() {
     <>
       <h1 className="colorWhite centeredText">Profile</h1>
 
-      {userData.username && characteristics.length > 0 ? (
+      {userData?.username && characteristics.length > 0 ? (
         <>
           <div className="centeredText" style={{marginBottom: '2rem'}}>
             <Image

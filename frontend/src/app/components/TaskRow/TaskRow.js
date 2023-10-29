@@ -16,7 +16,10 @@ const TaskRow = ({ taskName }) => {
           src="/images/__importance-1.svg"
           style={{
             height: "auto",
-            display: "block"
+            display: "block",
+            margin: "0 auto",
+            width: "30px",
+            transformY: "20px",
           }}
           alt="Icon"
         />
