@@ -10,6 +10,7 @@ from task_handling import set_done as task_set_done
 from task_handling import set_do_later as task_set_later
 from task_handling import add_task as task_add_task
 from task_handling import get_tasks as task_get_tasks
+from task_handling import get_subtask as task_get_subtask
 
 from db_controller import get_task_collection, get_user_collection
 
@@ -54,6 +55,11 @@ def get_user():
 @app.route("/get-characteristics", methods=["GET"])
 def get_characteristics():
     return user_get_characteristics()
+
+@app.route("/get-subtasks/<int:task_id>", methods=["POST"])
+def get_subtask(task_id):
+    return task_get_subtask(task_id)
+
 
 if __name__ == "__main__":
     app.run()

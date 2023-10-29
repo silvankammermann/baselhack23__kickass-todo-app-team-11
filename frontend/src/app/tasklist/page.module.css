@@ -10,14 +10,16 @@
 }
 
 .addTaskIcon {
-  position: absolute;
+  position: fixed;
+  z-index: 99999;
+  left: 4em;
+  top: 10em;
   color: var(--color_purple);
   width: 4.5rem;
   height: 4.5rem;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   cursor: pointer;
-  z-index: 1;
 }
 
 .icon__add {
@@ -26,4 +28,19 @@
   height: 100%;
   color: var(--color_purple);
   z-index: 5;
+}
+
+.msgLoading {
+  display: block;
+  color: var(--color_white);
+  text-align: center;
+  width: 100%;
+  margin: 3rem;
+}
+
+.kickassButton {
+  position: fixed;
+  bottom: 1em;
+  width: 10em;
+  left: calc(50% - 5em);
 }
