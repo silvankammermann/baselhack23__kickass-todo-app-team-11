@@ -33,6 +33,10 @@ def add_task(taskJson):
 def update_status(document_id, new_status):
     db = db_controller.get_task_collection()
     filter = {"_id": document_id}
+    if new_status == "do_later":
+        update = {'$inc': {'score': 1}}
+        result = db.update_one(filter, update)
+
     update = {"$set": {"status": new_status}}
 
     try:
