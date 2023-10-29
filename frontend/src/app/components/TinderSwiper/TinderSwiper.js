@@ -29,14 +29,23 @@ const TinderSwiper = ({ tasks }) => {
   };
 
   // Callback for outOfFrame.
-  const handleOutOfFrame = (id) => {
-    setRemainingTasks((prevTasks) => {
-      setCurrentTask((prevTasks) => prevTasks.find((task) => task.id === id));
-      prevTasks.filter((task) => task.id !== id);
-    });
+  const handleOutOfFrame = (direction, id) => {
+    // let currentTask = remainingTasks.find((task) => task.id === id);
+    setRemainingTasks((prevTasks) =>
+      //setCurrentTask((prevTasks) => prevTasks.find((task) => task.id === id));
+      prevTasks.filter((task) => task.id !== id)
+    );
 
-    console.log(currentTask);
+    if (direction === "right") {
+      const url = `http://localhost:5000/set-done/${id}`;
+      fetch(url, {}).then((r) => r);
+    }
+    if (direction === "left") {
+      const url = `http://localhost:5000/set-do-later/${id}`;
+      fetch(url, {}).then((r) => r);
+    }
 
+    //console.log(id);
     // sessionStorage.setItem("ongoing_task", JSON.stringify(currentTask));
     //router.push("/ongoing-task");
   };
@@ -49,7 +58,7 @@ const TinderSwiper = ({ tasks }) => {
             key={id}
             className={styles.card}
             ref={cardRefs[index]}
-            onCardLeftScreen={() => handleOutOfFrame(id)}
+            onCardLeftScreen={(direction) => handleOutOfFrame(direction, id)}
           >
             <div className={styles.container}>
               <span className="h1">{name}</span>
