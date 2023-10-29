@@ -88,7 +88,8 @@ def sort_tasks(sorting, data):
 def get_tasks(search="", sorting="importance-urgency"):
     data = []
     search_criteria = {
-        'creation_date': {'$lt': int(time.time())}
+        'creation_date': {'$lt': int(time.time())},
+        'status': {'$ne': 'done'}
     }
     if search:
         search_criteria['name'] = {'$regex': search, '$options': 'i'}

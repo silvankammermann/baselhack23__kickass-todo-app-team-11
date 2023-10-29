@@ -9,7 +9,7 @@ names = ["Read a Book", "Write an Essay", "Clean the Room", "Go for a Run", "Pre
          "Watch a Movie", "Study for Exam", "Visit a Friend", "Attend a Meeting", "Work on Project"]
 status = ["done", "do_later", "done"]
 
-for i in range(1, 21):
+for i in range(1, 11):
     creation_date = int(base_time - random.randint(0, 2 * 24 * 3600) + random.randint(0, 24 * 3600))
     duration = random.randint(1, 8)  # Assuming duration is in hours
     deadline = creation_date + duration * 3600 + random.randint(1, 24 * 3600)  # Deadline after creation_date
