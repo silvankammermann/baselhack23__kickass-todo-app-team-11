@@ -2,6 +2,7 @@ import json
 import db_controller
 import pymongo
 import time
+from get_subtasks import generate_subtasks
 
 import numpy as np
 
@@ -59,7 +60,6 @@ def get_ordered_tasks(n=10):
 def set_done(document_id):
     update_status(document_id, "done")
 
-
 def set_do_later(document_id):
     update_status(document_id, "do_later")
 
@@ -68,10 +68,11 @@ def sort_tasks(sorting, data):
     """
     One sorting function for now, can update with more later
     """
-
+    
     if sorting == "importance":
         return sorted(data, key=lambda task: task["importance"], reverse=True)
 
+    
     if sorting == "importance-deadline":
         return sorted(data, key=lambda task: (task["importance"], task["deadline"]), reverse=True)
 
@@ -102,6 +103,11 @@ def get_tasks(search="", sorting="importance-urgency"):
         data = sort_tasks(sorting, data)
     return data
 
+def get_subtask(task_id):
+    filter = {"_id": task_id}
+    task = db_controller.get_task_collection().find_one(filter)
+    subtasks = generate_subtasks(task)
+    return subtasks
 
 def update_score(document):
     db = db_controller.get_task_collection()
