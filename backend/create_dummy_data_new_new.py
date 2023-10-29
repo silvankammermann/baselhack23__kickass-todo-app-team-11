@@ -214,6 +214,7 @@ def create_manual_data_set():
             "name": task["name"],
             "urgency": task["urgency"],
             "importance": task["importance"],
+            "score": task["urgency"]+task["importance"],
             # "fun_factor": get_val(fun_factor_range),
             # "duration": get_val(duration_range),
             # "dependency": [],
