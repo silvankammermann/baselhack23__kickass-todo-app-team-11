@@ -10,6 +10,7 @@ import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import React, { useState, useEffect } from "react";
 import TaskCreate from "@/app/components/TaskCreate/TaskCreate";
 import defaultTasks from "@/app/testdata/tasks.js";
+import { getBgClass } from "@/app/utils";
 
 export default function Tinder() {
   const [tasks, setTasks] = useState([]);
@@ -46,7 +47,7 @@ export default function Tinder() {
       </Popover>
 
       {tasks && tasks.length > 0 ? (
-        tasks.map(({ name, id }) => <TaskRow key={id} taskName={name} />)
+        tasks.map((task) => <TaskRow key={task.id} bgPatternClass={getBgClass(task)} taskName={task.name} />)
       ) : (
         <div className={`h1 ${styles.msgLoading}`}>loading...</div>
       )}

@@ -6,12 +6,18 @@ function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-const TaskRow = ({ taskName }) => {
+const TaskRow = ({ taskName, bgPatternClass }) => {
   const iconNumber = getRandomNumber(1, 3);
+  const bgPatterns = [
+    'bgPatternPink',
+    'bgPatternOrange',
+    '',
+  ];
+  const patterIndex = getRandomNumber(0, 1)
 
   return (
     <>
-      <div className={`${styles.container} bgPatternOrange`}>
+      <div className={`${styles.container} ${bgPatterns[patterIndex]}`}>
         <button className={`${styles.removeButton} h3 circle bgPurple colorWhite`}>
           <RemoveIcon className="colorWhite bgPurple circle" />
         </button>
