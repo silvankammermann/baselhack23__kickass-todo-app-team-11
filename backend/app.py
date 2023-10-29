@@ -34,10 +34,13 @@ def add_task():
     task_add_task(task_data)
     return task_get_tasks(sorting="importance-deadline")
 
-@app.route("/set-done/<int:task_id>", methods=["POST"])
-def set_done(task_id: int):
+
+@app.route("/set-done/<task_id>", methods=["GET"])
+@app.route("/<task_id>", defaults={'task_id': None})
+def set_done(task_id):
     task_set_done(task_id)
-    return
+    return 
+
 
 @app.route("/set-do-later/<int:task_id>", methods=["POST"])
 def do_later(task_id: int):
