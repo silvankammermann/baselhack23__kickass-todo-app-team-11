@@ -11,7 +11,6 @@ export default function Settings() {
       "username": "john_doe",
       "characteristics": ["extrovert", "night", "sportive", "musical", "calm"]
   });
-  const [username, setUsername] = useState(userData.username);
   const [characteristics, setCharacteristics] = useState([
       "extrovert",
       "night",
@@ -42,7 +41,7 @@ export default function Settings() {
   };
 
   useEffect(() => {
-    setUserData(fetchUserData());
+    fetchUserData().then((r) => setUserData(r));
     fetchCharacteristics()
   }, []);
 
@@ -63,8 +62,7 @@ export default function Settings() {
 
           <Input
             style={{marginBottom: '2rem'}}
-            onChange={(e) => setUsername(e.target.value)}
-            value={username}
+            value={userData.username}
           />
 
           <Grid container spacing={4}>
