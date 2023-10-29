@@ -11,6 +11,18 @@
   cursor: grab;
 }
 
+.cardImportanceLow {
+  background-color: green;
+}
+
+.cardImportanceMedium {
+  background-color: orange;
+}
+
+.cardImportanceHigh {
+  background-color: red;
+}
+
 .card:nth-of-type(1) {
   position: relative;
 }
