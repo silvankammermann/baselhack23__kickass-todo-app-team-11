@@ -6,8 +6,21 @@ import { CircularProgress, Typography, Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 
 export default function Settings() {
-  const [userData, setUserData] = useState({});
-  const [characteristics, setCharacteristics] = useState([]);
+  const [userData, setUserData] = useState({
+      "username": "john_doe",
+      "characteristics": ["extrovert", "night", "sportive", "musical", "calm"]
+  });
+  const [characteristics, setCharacteristics] = useState([
+      "extrovert",
+      "night",
+      "social",
+      "sportive",
+      "perfectionist",
+      "musical",
+      "humorous",
+      "calm",
+      "ambivalent",
+  ]);
 
   const fetchCharacteristics = async () => {
     try {
@@ -34,11 +47,6 @@ export default function Settings() {
       console.error("Error fetching user data:", error);
     }
   };
-
-  useEffect(() => {
-    fetchUserData();
-    fetchCharacteristics();
-  }, []);
 
   const isActive = (tempChar) => {
     return userData?.characteristics.includes(tempChar);
