@@ -1,6 +1,6 @@
 # save this as app.py
 import json
-import reset_user
+# import reset_user
 
 from flask import Flask, request
 from flask import jsonify
@@ -13,6 +13,8 @@ from task_handling import set_do_later as task_set_later
 from task_handling import add_task as task_add_task
 from task_handling import get_tasks as task_get_tasks
 from task_handling import get_subtask as task_get_subtask
+
+from data_handling import check_new_task as data_check_new_task
 
 from db_controller import get_task_collection, get_user_collection
 
@@ -33,8 +35,10 @@ def add_tasks(tasks: list):
 
 @app.route("/add-task", methods=["POST"])
 def add_task():
+
     task_data = request.get_json()
-    task_add_task(task_data)
+    task_data_cleaned = data_check_new_task(task_data)
+    task_add_task(task_data_cleaned)
     return task_get_tasks()
 
 
