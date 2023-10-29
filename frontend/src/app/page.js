@@ -32,7 +32,7 @@ export default function Home() {
       {tasks && tasks.length > 0 ? (
         <TinderSwiper tasks={tasks} />
       ) : (
-        <span className={`h1 ${styles.msgLoading}`}>loading...</span>
+        <div className={`h1 ${styles.msgLoading}`}>loading...</div>
       )}
     </>
   );
