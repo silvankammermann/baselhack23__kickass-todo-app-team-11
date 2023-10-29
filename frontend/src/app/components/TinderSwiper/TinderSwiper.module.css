@@ -10,6 +10,7 @@
   height: 100%;
   cursor: grab;
 }
+
 .card:nth-of-type(1) {
   position: relative;
 }
@@ -19,7 +20,7 @@
   width: 100%;
   min-height: 25rem;
   box-shadow: 1px 3px 15px -7px rgba(0, 0, 0, 0.4);
-  display: flex;
+  display: grid;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -35,6 +36,7 @@
 .card:nth-child(even) .container {
   transform: rotate(5deg);
 }
+
 .card:nth-child(odd) .container {
   transform: rotate(-3deg);
 }
