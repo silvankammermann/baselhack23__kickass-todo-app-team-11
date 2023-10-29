@@ -1,0 +1,11 @@
+.input {
+  width: 100%;
+  border: none;
+  border-radius: 2rem;
+  background: var(--color_lightPurple);
+  padding: .6rem 2rem .5rem;
+}
+
+.input:focus {
+  outline: none;
+}

@@ -48,6 +48,27 @@
   background: var(--color_yellow);
 }
 
+.bgPatternOrange {
+  background-image: url("/images/bg1.png");
+  background-size: cover;
+  background-position: center;
+  transform-origin: center;
+}
+
+.bgPatternPurple {
+  background-image: url("/images/bg2.png");
+  background-size: cover;
+  background-position: center;
+  transform-origin: center;
+}
+
+.bgPatternPink {
+  background-image: url("/images/bg3.png");
+  background-size: cover;
+  background-position: center;
+  transform-origin: center;
+}
+
 /* --- System */
 
 .bgGreen {
