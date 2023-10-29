@@ -26,9 +26,16 @@ export default function RootLayout({ children }) {
   }
 
   // define header content
-  let headerTitle = "";
-  if (pathname === "/tasklist") {
-    headerTitle = "My tasks";
+  let headerTitle;
+  switch (pathname) {
+    case "/tasklist":
+      headerTitle = "My tasks";
+      break;
+    case "/ongoing-task":
+      headerTitle = "Ongoing task";
+      break;
+    default:
+      headerTitle = "";
   }
 
   return (
