@@ -15,6 +15,13 @@
 .popover__content {
   max-height: 100%;
   overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll; 
+}
+
+.popover__content::-webkit-scrollbar {
+  display: none;
 }
 
 .popover__close {
