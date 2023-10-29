@@ -8,6 +8,7 @@ import AddTask from "@/app/components/Tasks/AddTask";
 import AddCircleRoundedIcon from "@mui/icons-material/AddCircleRounded";
 import defaultTask from "@/app/testdata/tasks";
 import React, { useState, useEffect } from "react";
+import TaskCreate from "@/app/components/TaskCreate/TaskCreate";
 
 export default function Tinder() {
   const [tasks, setTasks] = useState(defaultTask);
@@ -41,7 +42,7 @@ export default function Tinder() {
           </div>
         }
       >
-        <AddTask />
+        <TaskCreate />
       </Popover>
       {tasks.map(({ name, id }) => {
         return <TaskRow key={id} taskName={name} />;
