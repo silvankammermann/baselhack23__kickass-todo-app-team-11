@@ -53,13 +53,18 @@ export default function Settings() {
     return userData?.characteristics.includes(tempChar);
   };
 
+  useEffect(() => {
+    fetchUserData();
+    fetchCharacteristics()
+  }, []);
+
   return (
     <>
       <h1 className="colorWhite centeredText">Profile</h1>
 
       {userData.username && characteristics.length > 0 ? (
         <>
-          <div className="centeredText">
+          <div className="centeredText" style={{marginBottom: '2rem'}}>
             <Image
               width={100}
               height={100}
@@ -69,6 +74,7 @@ export default function Settings() {
           </div>
 
           <Input
+            style={{marginBottom: '2rem'}}
             onChange={(e) => setUsername(e.target.value)}
             value={username}
           />
