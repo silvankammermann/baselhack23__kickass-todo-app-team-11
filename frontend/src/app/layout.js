@@ -8,6 +8,7 @@ import Header from "./components/Header/Header";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
+
 /*
 export const metadata = {
   title: "Kick Ass Todo App",
@@ -36,7 +37,8 @@ export default function RootLayout({ children }) {
         <Header title={headerTitle} />
         <b>{pathname}</b>
         <main className={styles.main}>
-          <div className={styles.main__inner}>{children}</div>
+          <div className={styles.main__inner}>{children}
+          </div>
         </main>
       </body>
     </html>

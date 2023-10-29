@@ -46,7 +46,20 @@ export default function Tinder() {
       </Popover>
       {tasks.map(({ name, id }) => {
         return <TaskRow key={id} taskName={name} />;
-      })}
+      })
+      }
+      <a href="/">
+        <Image className={styles.kickassButton}
+          width={400}
+          height={400}
+          src={`/images/kickass-button.png`}
+          alt="Button"
+          style={{
+            width: "10em",
+            height: "auto",
+            maxWidth: "100%",
+          }} />
+      </a>
     </>
   );
 }
