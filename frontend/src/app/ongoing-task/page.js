@@ -48,7 +48,7 @@ export default function OngoingTask() {
         delay: 1.6,
       }
     );
-  });
+  }, []);
 
   const [isDone, setIsDone] = useState(false);
   const [userData, setUserData] = useState({});
