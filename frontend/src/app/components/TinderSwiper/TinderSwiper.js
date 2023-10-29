@@ -6,6 +6,7 @@ import React, { useState, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { getBgClass } from "@/app/utils";
 
 const TinderSwiper = ({ tasks }) => {
   const router = useRouter();
@@ -79,7 +80,7 @@ const TinderSwiper = ({ tasks }) => {
         {tasks.map(({ _id, name }, index) => (
           <TinderCard
             key={_id}
-            className={`${styles.card} ${importanceClass}`}
+            className={`${styles.card} ${getBgClass(currentTask)}`}
             ref={cardRefs[index]}
             onCardLeftScreen={(direction) => handleOutOfFrame(direction, _id)}
           >
