@@ -3,6 +3,7 @@ import styles from "./TaskCreate.module.css";
 import {Grid, FormControl, RadioGroup, FormControlLabel, Radio, Button} from "@mui/material";
 import Input from "../Forms/Input";
 import Image from "next/image";
+import {redirect} from "next/navigation";
 
 const TaskCreate = () => {
   const [formData, setFormData] = useState({
@@ -90,6 +91,7 @@ const TaskCreate = () => {
       body: JSON.stringify(datas)
     }).then(() => {
       console.log('new task added')
+      redirect("/");
     }).catch((error) => {
       console.log(error)
     })
