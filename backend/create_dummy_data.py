@@ -12,13 +12,16 @@ for i in range(1, 41):
     creation_date = int(base_time - random.randint(0, 2 * 24 * 3600) + random.randint(0, 24 * 3600))
     duration = random.randint(1, 8)  # Assuming duration is in hours
     deadline = creation_date + duration * 3600 + random.randint(1, 24 * 3600)  # Deadline after creation_date
+    importance = random.randint(1, 3)
+    urgency = random.randint(1, 3)
     task = {
         "id": i,
         "name": random.choice(names),
         "urgency": random.randint(1, 3),
-        "importance": random.randint(1, 3),
-        "fun_factor": random.randint(1, 3),
-        "score": random.randint(0,5),
+        "importance": importance,
+        "fun_factor": urgency,
+        "score": importance * urgency,
+        "delayed_int": random.randint(0,5),
         "duration": duration,
         "deadline": deadline,
         "depends_on": [],
