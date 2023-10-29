@@ -99,9 +99,6 @@ def add_data_set(tasks):
 
 
 if __name__ == '__main__':
-    # tasks=create_manual_data_set()
-    # print(tasks)
-
     delete_current_collection()
     new_tasks = create_manual_data_set()
     add_data_set(new_tasks)
