@@ -1,4 +1,7 @@
 import json
+
+from bson import ObjectId
+
 import db_controller
 import pymongo
 import time
@@ -30,7 +33,7 @@ def add_task(taskJson):
 
 def update_status(document_id, new_status):
     db = db_controller.get_task_collection()
-    filter = {"_id": document_id}
+    filter = {"_id": ObjectId(document_id)}
     update = {"$set": {"status": new_status}}
 
     try:
