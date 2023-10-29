@@ -115,6 +115,36 @@
   position: relative;
 }
 
+.addTaskIcon:before {
+  content: "";
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: var(--color_white);
+}
+
+.addTaskIcon {
+  position: absolute;
+  color: var(--color_purple);
+  width: 4.5rem;
+  height: 4.5rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.icon__add {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: var(--color_purple);
+  z-index: 5;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
