@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from 'next/link'
 import styles from "./page.module.css";
 import TaskRow from "@/app/components/TaskRow/TaskRow";
 import Popover from "@/app/components/Popover/Popover";
@@ -50,7 +51,7 @@ export default function Tinder() {
         <span className={`h1 ${styles.msgLoading}`}>loading...</span>
       )}
 
-      <a href="/">
+      <Link href="/">
         <Image className={styles.kickassButton}
           width={400}
           height={400}
@@ -61,7 +62,7 @@ export default function Tinder() {
             height: "auto",
             maxWidth: "100%",
           }} />
-      </a>
+      </Link>
     </>
   );
 }
