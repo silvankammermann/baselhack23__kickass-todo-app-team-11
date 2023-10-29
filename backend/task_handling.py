@@ -1,8 +1,12 @@
 import json
+import random
+
+from bson import ObjectId
+
 import db_controller
 import pymongo
 import time
-from get_subtasks import generate_subtasks
+from get_subtasks import generate_subtasks, makes_sense_to_divide_task
 
 import numpy as np
 
@@ -33,9 +37,9 @@ def add_task(taskJson):
 
 def update_status(document_id, new_status):
     db = db_controller.get_task_collection()
-    filter = {"_id": document_id}
+    filter = {"_id": ObjectId(document_id)}
     if new_status == "do_later":
-        update = {'$inc': {'score': 1}}
+        update = {'$inc': {'score': 1, 'delayed_int': 1}}
         result = db.update_one(filter, update)
 
     update = {"$set": {"status": new_status}}
@@ -60,6 +64,7 @@ def get_ordered_tasks(n=10):
 def set_done(document_id):
     update_status(document_id, "done")
 
+
 def set_do_later(document_id):
     update_status(document_id, "do_later")
 
@@ -68,16 +73,15 @@ def sort_tasks(sorting, data):
     """
     One sorting function for now, can update with more later
     """
-    
+
     if sorting == "importance":
         return sorted(data, key=lambda task: task["importance"], reverse=True)
 
-    
     if sorting == "importance-deadline":
         return sorted(data, key=lambda task: (task["importance"], task["deadline"]), reverse=True)
 
     if sorting == "importance-urgency":
-        return sorted(data, key=lambda task: (task["urgency"], task["importance"]), reverse=True)
+        return sorted(data, key=lambda task: (task["urgency"], task["importance"], -task["delayed_int"]), reverse=True)
 
     return data
 
@@ -85,7 +89,8 @@ def sort_tasks(sorting, data):
 def get_tasks(search="", sorting="importance-urgency"):
     data = []
     search_criteria = {
-        'creation_date': {'$lt': int(time.time())}
+        'creation_date': {'$lt': int(time.time())},
+        'status': {'$ne': 'done'}
     }
     if search:
         search_criteria['name'] = {'$regex': search, '$options': 'i'}
@@ -97,17 +102,32 @@ def get_tasks(search="", sorting="importance-urgency"):
     for obj in results:
         obj_i = obj
         obj_i["_id"] = str(obj_i["_id"])
+
+        obj_name = obj_i["name"]
+
         data.append(obj_i)
+
+
+        # No Subtasks
+  #      if makes_sense_to_divide_task(obj_name):
+  #          data.append(obj_i)
+        # With Subtasks
+  #      else:
+  #          subtasks = generate_subtasks(obj)
+  #          for task in subtasks:
+  #              data.append(task)
 
     if sorting != "deadline":
         data = sort_tasks(sorting, data)
     return data
+
 
 def get_subtask(task_id):
     filter = {"_id": task_id}
     task = db_controller.get_task_collection().find_one(filter)
     subtasks = generate_subtasks(task)
     return subtasks
+
 
 def update_score(document):
     db = db_controller.get_task_collection()
