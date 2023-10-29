@@ -3,6 +3,8 @@ import db_controller
 import pymongo
 import time
 
+import numpy as np
+
 from datetime import datetime
 
 
@@ -120,5 +122,7 @@ def calculate_importance_score(task):
              # int(task['fun_factor']) * fun_factor_weight +
              int(task['duration']) * duration_weight +
              int(time_until_deadline * deadline_weight))
+
+    score = 1/(1+np.exp(-np.clip(score, a_min=-100, a_max=100)))
 
     return score
