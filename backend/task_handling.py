@@ -71,7 +71,7 @@ def update_status(document_id, new_status):
     if new_status == "do_later":
         update = {'$inc': {'score': 1, 'delayed_int': 1}}
         result = db.update_one(filter, update)
-    elif "new_status" == "done":
+    elif new_status == "done":
         document = db_controller.get_task_collection().find_one(
             {'_id': document_id},
             {'score': 1, '_id': 0}
