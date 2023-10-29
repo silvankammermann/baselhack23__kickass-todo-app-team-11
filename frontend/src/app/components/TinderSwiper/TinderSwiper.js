@@ -3,8 +3,11 @@
 import styles from "./TinderSwiper.module.css";
 import TinderCard from "react-tinder-card";
 import React, { useState, useMemo, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 const TinderSwiper = ({ tasks }) => {
+  const router = useRouter();
+
   // Initial state for remaining tasks.
   const [remainingTasks, setRemainingTasks] = useState(tasks);
 
@@ -25,10 +28,15 @@ const TinderSwiper = ({ tasks }) => {
   };
 
   // Callback for outOfFrame.
-  const handleOutOfFrame = (name) => {
+  const handleOutOfFrame = (id) => {
+    // let currentTask = remainingTasks.find((task) => task.id === id);
     setRemainingTasks((prevTasks) =>
-      prevTasks.filter((task) => task.name !== name)
+      prevTasks.filter((task) => task.id !== id)
     );
+
+    //console.log(id);
+    // sessionStorage.setItem("ongoing_task", JSON.stringify(currentTask));
+    //router.push("/ongoing-task");
   };
 
   return (
@@ -39,7 +47,7 @@ const TinderSwiper = ({ tasks }) => {
             key={id}
             className={styles.card}
             ref={cardRefs[index]}
-            onCardLeftScreen={() => handleOutOfFrame(name)}
+            onCardLeftScreen={() => handleOutOfFrame(id)}
           >
             <div className={styles.container}>
               <span className="h1">{name}</span>
