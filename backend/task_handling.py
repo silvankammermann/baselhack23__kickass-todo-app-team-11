@@ -16,18 +16,49 @@ from datetime import datetime
 # functionality around task scheduling, task prioritization etc.
 
 def add_task(taskJson):
-    taskJson["creation_date"] = int(time.time())
-    taskJson["status"] = "todo"
-    taskJson["score"] = taskJson['urgency'] + taskJson['importance']
+    """
+    {'_id': '653e3db0d131d9f3d598269a',
+    'name': 'Pay membership for Slothful Social Club',
+    'urgency': 3,
+    'importance': 3,
+    'fun_factor': 1,
+    'duration': 55,
+    'dependency': [],
+    'creation_date': 1697925600,
+    'deadline': 1698184800,
+    'status': 'do_later',
+    'delayed_int': 3,
+    'task_type': 'single'}
+    """
 
-    date_time = datetime.strptime(taskJson["deadline"], '%Y-%m-%dT%H:%M')
-    timestamp = date_time.timestamp()
-    timestamp_as_int = int(timestamp)
-    taskJson["deadline"] = timestamp_as_int
+    # No Subtasks
+    tasks = []
+    if makes_sense_to_divide_task(taskJson["name"]):
+        taskJson["creation_date"] = int(time.time())
+        taskJson["status"] = "open"
+        taskJson["score"] = taskJson['urgency'] + taskJson['importance']
+        taskJson["delayed_int"] = 0
+        taskJson["fun_factor"] = 0
+
+        tasks.append([taskJson])
+    # With Subtasks
+    else:
+        subtasks = generate_subtasks(taskJson["name"])
+        for task in subtasks:
+            task["creation_date"] = int(time.time())
+            task["status"] = "open"
+            task["score"] = task['urgency'] + task['importance']
+            task["delayed_int"] = 0
+
+            task['dependency'] = taskJson['dependency']
+            task['deadline'] = taskJson['deadline']
+            task['task_type'] = taskJson['task_type']
+
+            tasks.append(task)
 
     try:
         db = db_controller.get_task_collection()
-        result = db.insert_one(taskJson)
+        result = db.insert_many(tasks)
         return result
     except pymongo.errors.PyMongoError as e:
         # Handle any potential errors here
