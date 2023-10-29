@@ -36,7 +36,7 @@ def add_task():
     return task_get_tasks(sorting="importance-deadline")
 
 
-@app.route("/set-done/<task_id>", methods=["GET"])
+@app.route("/set-done/<task_id>", methods=["POST"])
 @app.route("/<task_id>", defaults={'task_id': None})
 def set_done(task_id):
     task_set_done(task_id)
