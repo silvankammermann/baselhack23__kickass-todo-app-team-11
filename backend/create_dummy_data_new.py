@@ -46,10 +46,10 @@ def create_manual_data_set():
     
     urgency_range = range(1,4)
     importance_range = range(1,4)
-    fun_factor_range = range(1,4)
-    duration_range = range(5,120,5)
-    deadline_range = range(1,11) #days
-    dependency = []
+    # fun_factor_range = range(1,4)
+    # duration_range = range(5,120,5)
+    # deadline_range = range(1,11) #days
+    # dependency = []
     creation_date_range = range(1,11)
     status_range = ["open", "do_later", "done"]
     delayed_int_range = range(1,11)
@@ -67,19 +67,19 @@ def create_manual_data_set():
         creation_date = date(2023,10,creation_day)
         creation_unix = int(time.mktime(creation_date.timetuple()))
 
-        deadline_date = creation_date + timedelta(days=get_val(deadline_range))
-        deadline_unix = int(time.mktime(deadline_date.timetuple()))
+        # deadline_date = creation_date + timedelta(days=get_val(deadline_range))
+        # deadline_unix = int(time.mktime(deadline_date.timetuple()))
 
 
         task = {
                 "name": task_name,
                 "urgency": get_val(urgency_range),
                 "importance": get_val(importance_range),
-                "fun_factor": get_val(fun_factor_range),
-                "duration": get_val(duration_range),
-                "dependency": [],
+                # "fun_factor": get_val(fun_factor_range),
+                # "duration": get_val(duration_range),
+                # "dependency": [],
                 "creation_date": creation_unix,
-                "deadline": deadline_unix,
+                # "deadline": deadline_unix,
                 "status": get_val(status_range),
                 "delayed_int": get_val(delayed_int_range),
                 "task_type": get_val(task_type_range)                
