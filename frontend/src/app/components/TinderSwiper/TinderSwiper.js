@@ -85,7 +85,7 @@ const TinderSwiper = ({ tasks }) => {
                   }}
                   alt="Icon"
                 />
-                <span className="h1">{task.name}</span>
+                <span className="h1">{name}</span>
               </div>
             </div>
           </TinderCard>
