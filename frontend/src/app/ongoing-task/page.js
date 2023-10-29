@@ -8,7 +8,7 @@ export default function OngoingTask() {
   const [isDone, setIsDone] = useState(false);
   const [currentTask, setCurrentTask] = useState({
     name: "Loading...",
-    id: 0,
+    _id: 0,
   });
 
   useEffect(() => {
@@ -16,9 +16,9 @@ export default function OngoingTask() {
   }, []);
 
   const handleDoneClick = () => {
-    const url = `http://localhost:5000/set-done/${currentTask.id}`;
+    const url = `http://localhost:5000/set-done/${currentTask._id}`;
     fetch(url, {
-      method: "POST",
+      method: "GET",
     }).then((response) => {
       setIsDone(true);
     });
@@ -34,7 +34,7 @@ export default function OngoingTask() {
           className={`h2 button circle bgGreen colorWhite ${styles.doneTrigger}`}
           onClick={handleDoneClick}
         >
-          Yes!
+          DONE!
         </button>
       </div>
       {isDone && (

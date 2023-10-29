@@ -26,5 +26,9 @@
 }
 
 .doneTrigger {
-  border: 5px solid red;
+  margin: 0 auto;
+  display: block;
+  width: 7rem;
+  aspect-ratio: 1/1;
+  transform: translate(5%, -38%);
 }
