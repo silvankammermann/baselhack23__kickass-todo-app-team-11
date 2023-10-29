@@ -4,11 +4,25 @@ from datetime import datetime, timedelta
 
 
 def generate_subtasks(task_data, num_subtasks=3):
+    """
+    {'_id': '653e3db0d131d9f3d598269a',
+    'name': 'Pay membership for Slothful Social Club',
+    'urgency': 3,
+    'importance': 3,
+    'fun_factor': 1,
+    'duration': 55,
+    'dependency': [],
+    'creation_date': 1697925600,
+    'deadline': 1698184800,
+    'status': 'do_later',
+    'delayed_int': 3,
+    'task_type': 'single'}
+    """
     # Initialize the OpenAI API key
     openai.api_key = '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'  # Replace with your OpenAI API key
 
     # Define a comprehensive prompt
-    prompt = f"Generate subtasks for the following task if you think necessary and estimate a score ranking harder tasks higher 0-100:\n" \
+    """prompt = f"Generate subtasks for the following task if you think necessary and estimate a score ranking harder tasks higher 0-100:\n" \
              f"Name: {task_data['name']}\n" \
              f"Urgency: {task_data['urgency']}\n" \
              f"Importance: {task_data['importance']}\n" \
@@ -18,8 +32,16 @@ def generate_subtasks(task_data, num_subtasks=3):
              f"Deadline: {task_data['deadline']}\n" \
              f"Creation Date: {task_data['creation_date']}\n" \
              f"Status: {task_data['status']}\n" \
+ \""""
+
+    prompt = f"Generate subtasks for the following task if you think necessary and estimate a score ranking harder tasks higher 1-3 or duration in min:\n" \
+             f"name: {task_data['name']} # suggest name subtask\n" \
+             f"urgency: {task_data['urgency']} # suggest urgency 1: not urgency 3: very urgency\n" \
+             f"importance: {task_data['importance']} # suggest importance 1: not importance 3: very importance\n" \
+             f"fun_factor: {task_data['fun_factor']} # suggest fun_factor 1: not fun 3: very fun\n" \
+             f"duration: {task_data['duration']} minutes\n" \
  \
-    # Generate subtasks using GPT-3
+        # Generate subtasks using GPT-3
     responses = openai.Completion.create(
         engine="text-davinci-002",  # You can specify the desired engine
         prompt=prompt,
@@ -30,7 +52,7 @@ def generate_subtasks(task_data, num_subtasks=3):
     )
 
     subtask_list = []
-    for i, response in enumerate(responses.choices):
+    for i, response in enumerate(responses.choiimportanceces):
         # Copy the base task and modify it
         subtask = copy.deepcopy(task_data)
 

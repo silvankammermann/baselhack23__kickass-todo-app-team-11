@@ -20,7 +20,7 @@ const TaskRow = ({ taskName }) => {
           }}
           alt="Icon"
         />
-        <span className="h2">{taskName}</span>
+        <div className={`${styles.taskIcon} h2`}>{taskName}</div>
       </div>
     </>
   );

@@ -1,10 +1,11 @@
 .taskCreate__radio {
   background-color: #fff;
-  border: 2px dotted var(--color_lightPurple);
+  border: .2em dashed var(--color_lightPurple);
   width: 100%;
   padding-bottom: 100%;
   position: relative;
   border-radius: 1rem;
+  font-size: .7rem;
   color: var(--color_darkPurple);
 }
 
@@ -21,6 +22,7 @@
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
-  font-size: 1rem;
+  white-space: nowrap;
   margin: 0;
+  color: var(--color_darkPurple);
 }

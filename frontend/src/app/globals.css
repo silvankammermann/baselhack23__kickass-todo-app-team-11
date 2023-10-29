@@ -133,7 +133,8 @@ p a,
 /* ––– */
 
 strong,
-b {
+b,
+.b {
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   color: var(--color_purple);
@@ -149,8 +150,11 @@ a {
   text-decoration: none;
 }
 
-button {
+.button {
+  color: var(--color_white);
+  text-transform: none;
   cursor: pointer;
+  border-radius: 10em;
 }
 
 /***** SVG shapes */
@@ -169,4 +173,36 @@ label {
 
 label span {
   font-family: "Tanker-Regular" !important;
+}
+
+/* *** Forms */
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"] textarea {
+  font-family: "Tanker-Regular";
+  font-size: 1.6em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.6rem;
+  color: var(--color_purple);
+  border: 10em;
+  padding: 0.6em;
+  border: 0;
+  border-radius: 2em;
+  margin-bottom: 0;
+  background: var(--color_lightPurple);
+  color: var(--color_darkPurple);
 }
