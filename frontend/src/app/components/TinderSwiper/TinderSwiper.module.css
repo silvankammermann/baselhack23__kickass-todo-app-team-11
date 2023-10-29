@@ -46,8 +46,16 @@
 }
 
 .menubar {
-  width: 100%;
-  transform: translate(-3em, -2em);
+  position: fixed;
+  z-index: 99999;
+  left: 4em;
+  top: 10em;
+  color: var(--color_purple);
+  width: 4.5rem;
+  height: 4.5rem;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .card:nth-child(even) .container {
