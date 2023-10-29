@@ -4,6 +4,8 @@ import styles from "./TinderSwiper.module.css";
 import TinderCard from "react-tinder-card";
 import React, { useState, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Image from "next/image";
 
 const TinderSwiper = ({ tasks }) => {
   const router = useRouter();
@@ -42,15 +44,26 @@ const TinderSwiper = ({ tasks }) => {
       router.push("/ongoing-task");
     }
     if (direction === "left") {
-      const url = `http://localhost:5000/set-do-later/${id}`;
-      fetch(url, {
-        method: "GET",
-      }).then((r) => r);
+      sessionStorage.setItem(
+        "procrastinated_task",
+        JSON.stringify(currentTask)
+      );
+      router.push("/motivation-screen");
     }
   };
 
   return (
     <>
+      <div className={styles.menubar}>
+        <Link href="/tasklist">
+          <Image
+            src="/images/menu-icon.svg"
+            width={50}
+            height={50}
+            alt="menu icon"
+          />
+        </Link>
+      </div>
       <div className={styles.cardStack}>
         {tasks.map(({ _id, name }, index) => (
           <TinderCard
@@ -60,7 +73,21 @@ const TinderSwiper = ({ tasks }) => {
             onCardLeftScreen={(direction) => handleOutOfFrame(direction, _id)}
           >
             <div className={styles.container}>
-              <span className="h1">{name}</span>
+              <div>
+                <Image
+                  // className={styles.logo}
+                  width={30}
+                  height={30}
+                  src="/images/__importance-1.svg"
+                  style={{
+                    height: "auto",
+                    display: "block",
+                    margin: ".5em auto",
+                  }}
+                  alt="Icon"
+                />
+                <span className="h1">{name}</span>
+              </div>
             </div>
           </TinderCard>
         ))}

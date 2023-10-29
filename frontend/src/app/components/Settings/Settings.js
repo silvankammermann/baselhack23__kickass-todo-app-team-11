@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { CircularProgress, Typography, Grid } from "@mui/material";
 import Input from "../Forms/Input";
+import fetchUserData from "@/app/components/Api/UserApi";
 
 export default function Settings() {
   const [userData, setUserData] = useState({
@@ -36,25 +37,12 @@ export default function Settings() {
     }
   };
 
-  const fetchUserData = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/get-user`);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      setUserData(data);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-    }
-  };
-
   const isActive = (tempChar) => {
     return userData?.characteristics.includes(tempChar);
   };
 
   useEffect(() => {
-    fetchUserData();
+    setUserData(fetchUserData());
     fetchCharacteristics()
   }, []);
 
@@ -68,7 +56,7 @@ export default function Settings() {
             <Image
               width={100}
               height={100}
-              src="/images/sloth-profile.svg"
+              src={userData.score >= 5 ? '/images/Kickass_profile-beaver.png' : '/images/Kickass_profile-sloth.png'}
               alt="Profile Image"
             />
           </div>
