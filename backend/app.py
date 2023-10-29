@@ -56,7 +56,8 @@ def do_later(task_id):
 
 @app.route("/get-user", methods=["GET"])
 def get_user():
-    return get_user()
+    user = user_get_user()
+    return user
 
 @app.route("/get-characteristics", methods=["GET"])
 def get_characteristics():
