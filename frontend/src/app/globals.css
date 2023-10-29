@@ -149,3 +149,16 @@ a {
 button {
   cursor: pointer;
 }
+
+input {
+  font-family: "Tanker-Regular" !important;
+  font-size: 1.1rem !important;
+}
+
+label {
+  font-family: "Tanker-Regular" !important;
+}
+
+label span {
+  font-family: "Tanker-Regular" !important;
+}

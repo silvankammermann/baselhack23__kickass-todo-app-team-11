@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import styles from "./page.module.css";
+import {useState} from "react";
 import TaskRow from "./components/TaskRow/TaskRow";
 import defaultTasks from "./testdata/tasks.js";
+import Popover from "@/app/components/Popover/Popover";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import TaskCreate from "@/app/components/TaskCreate/TaskCreate";
 
 export default function Home() {
   const [tasks, setTasks] = useState(defaultTasks);
@@ -30,6 +32,14 @@ export default function Home() {
 
   return (
     <>
+      <Popover trigger={
+          <div>
+            <AddCircleIcon className="fcolor--purple" />
+          </div>
+        }>
+          <TaskCreate />
+      </Popover>
+
       {tasks.map(({ name, id }) => {
         return <TaskRow key={id} taskName={name} />;
       })}
