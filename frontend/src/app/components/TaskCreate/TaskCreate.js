@@ -18,32 +18,58 @@ import {
 const TaskCreate = () => {
   const [formData, setFormData] = useState({
     name: "",
-    urgency: "",
-    importance: "",
-    funFactor: "",
     duration: "",
     deadline: "",
   });
 
-  const [selectedValue, setSelectedValue] = useState(null);
-  const [clickedValue, setClickedValue] = useState(null);
+  const [importance, setImportance] = useState(0);
+  const [urgency, setUrgency] = useState(0);
+  const [repeat, setRepeat] = useState(0);
 
-  const gridData = [
-    { title: "Daily", value: "daily" },
-    { title: "Weekly", value: "weekly" },
-    { title: "MONTHLY", value: "monthly" },
-    { title: "nice to have", value: "nice_to_have" },
-    { title: "quite important", value: "quite_important" },
-    { title: "f*cking important!", value: "fucking_important" },
-    { title: "maybe one day", value: "one_day" },
-    { title: "to be done asap", value: "asap" },
-    { title: "right now!", value: "now" },
+  const importanceOptions = [
+    {
+      weight: 1,
+      name: "Nice to have"
+    },
+    {
+      weight: 2,
+      name: "Quite important"
+    },
+    {
+      weight: 3,
+      name: "F*cking important"
+    }
   ];
 
-  const handleRadioChange = (event) => {
-    setSelectedValue(event.target.value);
-    setClickedValue(event.target.value);
-  };
+  const urgencyOptions = [
+    {
+      weight: 1,
+      name: "Maybe one day"
+    },
+    {
+      weight: 2,
+      name: "To be done ASAP"
+    },
+    {
+      weight: 3,
+      name: "Right now!"
+    }
+  ];
+
+  const repeatOptions = [
+    {
+      weight: 1,
+      name: "Daily"
+    },
+    {
+      weight: 2,
+      name: "Weekly"
+    },
+    {
+      weight: 3,
+      name: "Monthly"
+    }
+  ];
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -56,8 +82,38 @@ const TaskCreate = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here, e.g., send the data to an API or perform other actions.
-    console.log(formData);
+
+    const datas = {
+      ...formData,
+      urgency,
+      importance,
+      repeat,
+    };
+
+    fetch('http://127.0.0.1:5000/add-task', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datas)
+    }).then(() => {
+      console.log('new task added')
+    }).catch((error) => {
+      console.log(error)
+    })
   };
+
+  const handleUrgencyChange = (event) => {
+    setUrgency(parseInt(event.target.value));
+  }
+
+  const handleRepeatChange = (event) => {
+    setRepeat(parseInt(event.target.value));
+  }
+
+  const handleImportanceChange = (event) => {
+    setImportance(parseInt(event.target.value));
+  }
 
   return (
     <Container>
@@ -72,48 +128,6 @@ const TaskCreate = () => {
               onChange={handleChange}
               required
             />
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl fullWidth>
-              <InputLabel>Urgency</InputLabel>
-              <Select
-                name="urgency"
-                value={formData.urgency}
-                onChange={handleChange}
-              >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl fullWidth>
-              <InputLabel>Importance</InputLabel>
-              <Select
-                name="importance"
-                value={formData.importance}
-                onChange={handleChange}
-              >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={4}>
-            <FormControl fullWidth>
-              <InputLabel>Fun Factor</InputLabel>
-              <Select
-                name="funFactor"
-                value={formData.funFactor}
-                onChange={handleChange}
-              >
-                <MenuItem value={1}>1</MenuItem>
-                <MenuItem value={2}>2</MenuItem>
-                <MenuItem value={3}>3</MenuItem>
-              </Select>
-            </FormControl>
           </Grid>
           <Grid item xs={6}>
             <TextField
@@ -133,37 +147,102 @@ const TaskCreate = () => {
               type="datetime-local"
               value={formData.deadline}
               onChange={handleChange}
+              required
             />
           </Grid>
-<Grid item xs={12}>
-          <FormControl component="fieldset" style={{
-            display: "flex",
-          }}>
-        <RadioGroup
-          row
-          aria-label="options"
-          name="options"
-          value={selectedValue}
-          onChange={handleRadioChange}
-        >
-          <Grid container spacing={4}>
-            {gridData.map((item) => (
-              <Grid item key={item.value} xs={4}>
-                <div className={`${styles.taskCreate__radio} ${
-                    selectedValue === item.value ? styles.taskCreate__radio__active : ""
-                  }`}>
-                  <FormControlLabel
-                    value={item.value}
-                    control={<Radio sx={{ display: "none" }} />} // Hide the radio button
-                    label={item.title}
-                  />
-                </div>
-              </Grid>
-            ))}
+
+          <Grid item xs={12}>
+            <FormControl component="fieldset" style={{
+              display: "flex",
+            }}>
+              <RadioGroup
+                row
+                aria-label="options"
+                name="importance"
+                value={urgency}
+                onChange={handleImportanceChange}
+                required
+              >
+                <Grid container spacing={4}>
+                  {importanceOptions.map((item) => (
+                    <Grid item key={`importance_${item.weight}`} xs={4}>
+                      <div className={`${styles.taskCreate__radio} ${
+                        importance == item.weight ? styles.taskCreate__radio__active : ""
+                      }`}>
+                        <FormControlLabel
+                          value={item.weight}
+                          control={<Radio sx={{display: "none"}}/>} // Hide the radio button
+                          label={item.name}
+                        />
+                      </div>
+                    </Grid>
+                  ))}
+                </Grid>
+              </RadioGroup>
+            </FormControl>
           </Grid>
-        </RadioGroup>
-      </FormControl>
-</Grid>
+
+          <Grid item xs={12}>
+            <FormControl component="fieldset" style={{
+              display: "flex",
+            }}>
+              <RadioGroup
+                row
+                aria-label="options"
+                name="urgency"
+                value={urgency}
+                onChange={handleUrgencyChange}
+                required
+              >
+                <Grid container spacing={4}>
+                  {urgencyOptions.map((item) => (
+                    <Grid item key={`urgency_${item.weight}`} xs={4}>
+                      <div className={`${styles.taskCreate__radio} ${
+                        urgency == item.weight ? styles.taskCreate__radio__active : ""
+                      }`}>
+                        <FormControlLabel
+                          value={item.weight}
+                          control={<Radio sx={{display: "none"}}/>} // Hide the radio button
+                          label={item.name}
+                        />
+                      </div>
+                    </Grid>
+                  ))}
+                </Grid>
+              </RadioGroup>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <FormControl component="fieldset" style={{
+              display: "flex",
+            }}>
+              <RadioGroup
+                row
+                aria-label="options"
+                name="fun_factor"
+                value={repeat}
+                onChange={handleRepeatChange}
+                required
+              >
+                <Grid container spacing={4}>
+                  {repeatOptions.map((item) => (
+                    <Grid item key={`repeat_${item.weight}`} xs={4}>
+                      <div className={`${styles.taskCreate__radio} ${
+                        repeat == item.weight ? styles.taskCreate__radio__active : ""
+                      }`}>
+                        <FormControlLabel
+                          value={item.weight}
+                          control={<Radio sx={{display: "none"}}/>} // Hide the radio button
+                          label={item.name}
+                        />
+                      </div>
+                    </Grid>
+                  ))}
+                </Grid>
+              </RadioGroup>
+            </FormControl>
+          </Grid>
 
           <Grid item xs={12}>
             <Button type="submit" variant="contained" color="primary">
