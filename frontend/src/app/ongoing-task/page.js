@@ -34,7 +34,7 @@ export default function OngoingTask() {
           className={`h2 button circle bgGreen colorWhite ${styles.doneTrigger}`}
           onClick={handleDoneClick}
         >
-          Yes!
+          DONE!
         </button>
       </div>
       {isDone && (
