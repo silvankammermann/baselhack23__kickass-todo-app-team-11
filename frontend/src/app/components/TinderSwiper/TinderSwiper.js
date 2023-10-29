@@ -30,15 +30,16 @@ const TinderSwiper = ({ tasks }) => {
 
   // Callback for outOfFrame.
   const handleOutOfFrame = (direction, id) => {
+    const currentTask = remainingTasks.find((task) => task.id === id);
+
     // let currentTask = remainingTasks.find((task) => task.id === id);
     setRemainingTasks((prevTasks) =>
-      //setCurrentTask((prevTasks) => prevTasks.find((task) => task.id === id));
       prevTasks.filter((task) => task.id !== id)
     );
 
     if (direction === "right") {
-      const url = `http://localhost:5000/set-done/${id}`;
-      fetch(url, {}).then((r) => r);
+      sessionStorage.setItem("ongoing_task", JSON.stringify(currentTask));
+      router.push("/ongoing-task");
     }
     if (direction === "left") {
       const url = `http://localhost:5000/set-do-later/${id}`;
@@ -46,8 +47,6 @@ const TinderSwiper = ({ tasks }) => {
     }
 
     //console.log(id);
-    // sessionStorage.setItem("ongoing_task", JSON.stringify(currentTask));
-    //router.push("/ongoing-task");
   };
 
   return (
