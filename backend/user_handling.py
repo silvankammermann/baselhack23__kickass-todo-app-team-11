@@ -1,9 +1,7 @@
+import json
+
 from flask import jsonify
 
-mock_user = {
-    "username": "john_doe",
-    "characteristics": ["extrovert", "night", "sportive", "musical", "calm"]
-}
 
 mock_characteristics = [
     "extrovert",
@@ -18,7 +16,16 @@ mock_characteristics = [
 ]
 
 def get_user():
-    return jsonify(mock_user)
+    with open("user.json") as f:
+        mock_user = json.load(f)
+    return mock_user
+
+def increase_user_score(score=0):
+    with open("user.json") as f:
+        mock_user = json.load(f)
+    mock_user["score"] += score
+    with open('data.json', 'w') as f:
+        json.dump(mock_user, f)
 
 def get_characteristics():
     return jsonify(mock_characteristics)
