@@ -91,10 +91,10 @@ const TaskCreate = () => {
       body: JSON.stringify(datas)
     }).then(() => {
       console.log('new task added')
-      redirect("/");
+      window.location.href = '/';
     }).catch((error) => {
       console.log(error)
-    })
+    });
   };
 
   const handleUrgencyChange = (event) => {
