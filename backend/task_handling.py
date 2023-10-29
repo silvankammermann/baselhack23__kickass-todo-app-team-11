@@ -76,7 +76,8 @@ def update_status(document_id, new_status):
             {'_id': document_id},
             {'score': 1, '_id': 0}
         )
-        increase_user_score(document['score'])
+        # increase_user_score(document['score'])
+        increase_user_score(1)
 
     update = {"$set": {"status": new_status}}
 
