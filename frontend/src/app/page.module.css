@@ -226,3 +226,11 @@
     transform: rotate(0deg);
   }
 }
+
+.msgLoading {
+  display: block;
+  color: var(--color_white);
+  text-align: center;
+  width: 100%;
+  margin: 3rem;
+}
