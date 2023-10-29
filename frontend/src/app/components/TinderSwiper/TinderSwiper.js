@@ -60,7 +60,7 @@ const TinderSwiper = ({ tasks }) => {
   } else if (currentTask.importance === 2) {
     importanceClass = styles.cardImportanceMedium;
   } else {
-    importanceClass = stylesstyles.cardImportanceMedium;
+    importanceClass = styles.cardImportanceMedium;
   }
 
   return (
