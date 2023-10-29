@@ -3,13 +3,14 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { CircularProgress, Typography, Grid } from "@mui/material";
-import TextField from "@mui/material/TextField";
+import Input from "../Forms/Input";
 
 export default function Settings() {
   const [userData, setUserData] = useState({
       "username": "john_doe",
       "characteristics": ["extrovert", "night", "sportive", "musical", "calm"]
   });
+  const [username, setUsername] = useState(userData.username);
   const [characteristics, setCharacteristics] = useState([
       "extrovert",
       "night",
@@ -67,13 +68,9 @@ export default function Settings() {
             />
           </div>
 
-          <TextField
-            id="outlined-read-only-input"
-            label="Name"
-            defaultValue={userData.username}
-            InputProps={{
-              readOnly: true,
-            }}
+          <Input
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
           />
 
           <Grid container spacing={4}>
