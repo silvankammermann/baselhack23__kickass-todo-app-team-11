@@ -7,6 +7,7 @@ import db_controller
 import pymongo
 import time
 from get_subtasks import generate_subtasks, makes_sense_to_divide_task
+from user_handling import increase_user_score
 
 import numpy as np
 
@@ -33,14 +34,13 @@ def add_task(taskJson):
 
     # No Subtasks
     tasks = []
-    if makes_sense_to_divide_task(taskJson["name"]):
+    if True or makes_sense_to_divide_task(taskJson["name"]):
         taskJson["creation_date"] = int(time.time())
         taskJson["status"] = "open"
         taskJson["score"] = taskJson['urgency'] + taskJson['importance']
         taskJson["delayed_int"] = 0
-        taskJson["fun_factor"] = 0
 
-        tasks.append([taskJson])
+        tasks.append(taskJson)
     # With Subtasks
     else:
         subtasks = generate_subtasks(taskJson["name"])
@@ -59,7 +59,6 @@ def add_task(taskJson):
     try:
         db = db_controller.get_task_collection()
         result = db.insert_many(tasks)
-        return result
     except pymongo.errors.PyMongoError as e:
         # Handle any potential errors here
         print(f"Error inserting task: {e}")
@@ -72,6 +71,12 @@ def update_status(document_id, new_status):
     if new_status == "do_later":
         update = {'$inc': {'score': 1, 'delayed_int': 1}}
         result = db.update_one(filter, update)
+    elif "new_status" == "done":
+        document = db_controller.get_task_collection().find_one(
+            {'_id': document_id},
+            {'score': 1, '_id': 0}
+        )
+        increase_user_score(document['score'])
 
     update = {"$set": {"status": new_status}}
 

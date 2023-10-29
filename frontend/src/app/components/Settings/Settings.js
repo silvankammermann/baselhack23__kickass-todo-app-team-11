@@ -3,11 +3,25 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { CircularProgress, Typography, Grid } from "@mui/material";
-import TextField from "@mui/material/TextField";
+import Input from "../Forms/Input";
 
 export default function Settings() {
-  const [userData, setUserData] = useState({});
-  const [characteristics, setCharacteristics] = useState([]);
+  const [userData, setUserData] = useState({
+      "username": "john_doe",
+      "characteristics": ["extrovert", "night", "sportive", "musical", "calm"]
+  });
+  const [username, setUsername] = useState(userData.username);
+  const [characteristics, setCharacteristics] = useState([
+      "extrovert",
+      "night",
+      "social",
+      "sportive",
+      "perfectionist",
+      "musical",
+      "humorous",
+      "calm",
+      "ambivalent",
+  ]);
 
   const fetchCharacteristics = async () => {
     try {
@@ -35,14 +49,14 @@ export default function Settings() {
     }
   };
 
-  useEffect(() => {
-    fetchUserData();
-    fetchCharacteristics();
-  }, []);
-
   const isActive = (tempChar) => {
     return userData?.characteristics.includes(tempChar);
   };
+
+  useEffect(() => {
+    fetchUserData();
+    fetchCharacteristics()
+  }, []);
 
   return (
     <>
@@ -50,7 +64,7 @@ export default function Settings() {
 
       {userData.username && characteristics.length > 0 ? (
         <>
-          <div className="centeredText">
+          <div className="centeredText" style={{marginBottom: '2rem'}}>
             <Image
               width={100}
               height={100}
@@ -59,13 +73,10 @@ export default function Settings() {
             />
           </div>
 
-          <TextField
-            id="outlined-read-only-input"
-            label="Name"
-            defaultValue={userData.username}
-            InputProps={{
-              readOnly: true,
-            }}
+          <Input
+            style={{marginBottom: '2rem'}}
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
           />
 
           <Grid container spacing={4}>

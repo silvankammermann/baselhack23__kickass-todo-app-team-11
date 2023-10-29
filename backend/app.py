@@ -1,5 +1,7 @@
 # save this as app.py
 import json
+# import reset_user
+
 from flask import Flask, request
 from flask import jsonify
 from flask_cors import CORS # needs pip install Flask-CORS
@@ -12,6 +14,8 @@ from task_handling import add_task as task_add_task
 from task_handling import get_tasks as task_get_tasks
 from task_handling import get_subtask as task_get_subtask
 
+from data_handling import check_new_task as data_check_new_task
+
 from db_controller import get_task_collection, get_user_collection
 
 app = Flask(__name__)
@@ -21,7 +25,7 @@ CORS(app)
 @app.route("/<search>", defaults={'search': None})
 @app.route("/get-tasks/<search>", methods=["GET"])
 def get_tasks(search):
-    return task_get_tasks(search, sorting="importance-deadline")
+    return task_get_tasks(search)
 
 @app.route("/add-tasks", methods=["POST"])
 def add_tasks(tasks: list):
@@ -31,26 +35,28 @@ def add_tasks(tasks: list):
 
 @app.route("/add-task", methods=["POST"])
 def add_task():
+
     task_data = request.get_json()
-    task_add_task(task_data)
-    return task_get_tasks(sorting="importance-deadline")
+    task_data_cleaned = data_check_new_task(task_data)
+    task_add_task(task_data_cleaned)
+    return task_get_tasks()
 
 
 @app.route("/set-done/<task_id>", methods=["GET"])
 @app.route("/<task_id>", defaults={'task_id': None})
 def set_done(task_id):
     task_set_done(task_id)
-    return task_get_tasks(sorting="importance-deadline")
+    return task_get_tasks()
 
 @app.route("/set-do-later/<task_id>", methods=["GET"])
 @app.route("/<task_id>", defaults={'task_id': None})
 def do_later(task_id):
     task_set_later(task_id)
-    return task_get_tasks(sorting="importance-deadline")
+    return task_get_tasks()
 
 @app.route("/get-user", methods=["GET"])
 def get_user():
-    return user_get_user()
+    return get_user()
 
 @app.route("/get-characteristics", methods=["GET"])
 def get_characteristics():
