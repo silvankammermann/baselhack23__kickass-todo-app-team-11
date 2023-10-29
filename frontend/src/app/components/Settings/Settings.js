@@ -11,9 +11,7 @@ export default function Settings() {
 
   const fetchCharacteristics = async () => {
     try {
-      const response = await fetch(
-        `${process.env.API_BASE_URL}/get-characteristics`
-      );
+      const response = await fetch(`http://localhost:5000/get-characteristics`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -26,7 +24,7 @@ export default function Settings() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch(`${process.env.API_BASE_URL}/get-user`);
+      const response = await fetch(`http://localhost:5000/get-user`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }

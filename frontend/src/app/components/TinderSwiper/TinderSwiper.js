@@ -8,8 +8,9 @@ import { useRouter } from "next/navigation";
 const TinderSwiper = ({ tasks }) => {
   const router = useRouter();
 
-  // Initial state for remaining tasks.
+  // Initial state for remaining tasks
   const [remainingTasks, setRemainingTasks] = useState(tasks);
+  const [currentTask, setCurrentTask] = useState(tasks);
 
   const cardRefs = useMemo(
     () =>
@@ -31,16 +32,17 @@ const TinderSwiper = ({ tasks }) => {
   const handleOutOfFrame = (direction, id) => {
     // let currentTask = remainingTasks.find((task) => task.id === id);
     setRemainingTasks((prevTasks) =>
+      //setCurrentTask((prevTasks) => prevTasks.find((task) => task.id === id));
       prevTasks.filter((task) => task.id !== id)
     );
 
-    if (direction === 'right') {
+    if (direction === "right") {
       const url = `http://localhost:5000/set-done/${id}`;
-      fetch(url, {}).then(r => r);
+      fetch(url, {}).then((r) => r);
     }
-    if (direction === 'left') {
+    if (direction === "left") {
       const url = `http://localhost:5000/set-do-later/${id}`;
-      fetch(url, {}).then(r => r);
+      fetch(url, {}).then((r) => r);
     }
 
     //console.log(id);
@@ -65,7 +67,8 @@ const TinderSwiper = ({ tasks }) => {
         ))}
       </div>
       <div className={styles.decissionTriggers}>
-        <button style={{ width: "3em" }}
+        <button
+          style={{ width: "3em" }}
           className="h2 button circle bgRed colorWhite"
           onClick={() => {
             swipe("left");
@@ -73,7 +76,8 @@ const TinderSwiper = ({ tasks }) => {
         >
           Later
         </button>
-        <button style={{ width: "3em" }}
+        <button
+          style={{ width: "3em" }}
           className="h2 button circle bgGreen colorWhite"
           onClick={() => {
             swipe("right");
