@@ -9,7 +9,7 @@
 .container {
   position: relative;
   width: 100%;
-  min-height: 25rem;
+  min-height: 27rem;
   box-shadow: 1px 3px 15px -7px rgba(0, 0, 0, 0.4);
   display: flex;
   justify-content: center;
