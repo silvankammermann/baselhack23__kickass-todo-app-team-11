@@ -4,6 +4,7 @@ import styles from "./TinderSwiper.module.css";
 import TinderCard from "react-tinder-card";
 import React, { useState, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 
 const TinderSwiper = ({ tasks }) => {
@@ -52,6 +53,16 @@ const TinderSwiper = ({ tasks }) => {
 
   return (
     <>
+      <div className={styles.menubar}>
+        <Link href="/tasklist">
+          <Image
+            src="/images/menu-icon.svg"
+            width={50}
+            height={50}
+            alt="menu icon"
+          />
+        </Link>
+      </div>
       <div className={styles.cardStack}>
         {tasks.map(({ _id, name }, index) => (
           <TinderCard

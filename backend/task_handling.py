@@ -59,7 +59,6 @@ def add_task(taskJson):
     try:
         db = db_controller.get_task_collection()
         result = db.insert_many(tasks)
-        return result
     except pymongo.errors.PyMongoError as e:
         # Handle any potential errors here
         print(f"Error inserting task: {e}")
