@@ -42,10 +42,11 @@ const TinderSwiper = ({ tasks }) => {
       router.push("/ongoing-task");
     }
     if (direction === "left") {
-      const url = `http://localhost:5000/set-do-later/${id}`;
-      fetch(url, {
-        method: "GET",
-      }).then((r) => r);
+      sessionStorage.setItem(
+        "procrastinated_task",
+        JSON.stringify(currentTask)
+      );
+      router.push("/motivation-screen");
     }
   };
 

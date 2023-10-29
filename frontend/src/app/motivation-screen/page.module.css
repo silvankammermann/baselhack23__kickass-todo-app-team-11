@@ -1,0 +1,26 @@
+.hugeStatement {
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 7rem;
+  color: #edd6ff;
+  text-align: center;
+  line-height: 1;
+}
+
+.memeContainer {
+  position: relative;
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.decisionButton {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  margin: 1em auto;
+  margin-bottom: 0.5em;
+  padding: 9px 13px 9px 18px;
+  border-radius: 38px;
+  border: none;
+}
