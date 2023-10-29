@@ -48,7 +48,7 @@ const TinderSwiper = ({ tasks }) => {
         ))}
       </div>
       <div className={styles.decissionTriggers}>
-        <button
+        <button style={{ width: "3em" }}
           className="h2 button circle bgRed colorWhite"
           onClick={() => {
             swipe("left");
@@ -56,7 +56,7 @@ const TinderSwiper = ({ tasks }) => {
         >
           Later
         </button>
-        <button
+        <button style={{ width: "3em" }}
           className="h2 button circle bgGreen colorWhite"
           onClick={() => {
             swipe("right");
