@@ -18,7 +18,7 @@ for i in range(1, 41):
         "urgency": random.randint(1, 3),
         "importance": random.randint(1, 3),
         "fun_factor": random.randint(1, 3),
-        "score": 0,
+        "score": random.randint(0,5),
         "duration": duration,
         "deadline": deadline,
         "depends_on": [],

@@ -1,4 +1,5 @@
 import json
+import random
 
 from bson import ObjectId
 
@@ -79,7 +80,7 @@ def sort_tasks(sorting, data):
         return sorted(data, key=lambda task: (task["importance"], task["deadline"]), reverse=True)
 
     if sorting == "importance-urgency":
-        return sorted(data, key=lambda task: (task["urgency"], task["importance"], task["score"]), reverse=True)
+        return sorted(data, key=lambda task: (task["urgency"], task["importance"], -task["score"]), reverse=True)
 
     return data
 
