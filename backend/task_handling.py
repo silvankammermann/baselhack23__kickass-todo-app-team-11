@@ -96,7 +96,6 @@ def get_tasks(search="", sorting="deadline"):
 def update_score(document_id):
     db = db_controller.get_task_collection()
     score = calculate_importance_score(db.find_one({'_id': document_id["_id"]}))
-    print(score)
 
     filter = {"_id": document_id}
     update = {"$set": {"score": score}}
