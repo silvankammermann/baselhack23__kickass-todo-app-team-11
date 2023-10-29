@@ -40,7 +40,7 @@ def add_task(taskJson):
         taskJson["delayed_int"] = 0
         taskJson["fun_factor"] = 0
 
-        tasks.append([taskJson])
+        tasks.append(taskJson)
     # With Subtasks
     else:
         subtasks = generate_subtasks(taskJson["name"])
@@ -59,7 +59,6 @@ def add_task(taskJson):
     try:
         db = db_controller.get_task_collection()
         result = db.insert_many(tasks)
-        return result
     except pymongo.errors.PyMongoError as e:
         # Handle any potential errors here
         print(f"Error inserting task: {e}")
